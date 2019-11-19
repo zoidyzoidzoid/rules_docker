@@ -300,6 +300,7 @@ def _impl(
         compression = None,
         compression_options = None,
         debs = None,
+        rpms = None,
         tars = None,
         architecture = None,
         operating_system = None,
@@ -332,6 +333,7 @@ def _impl(
     compression: str, overrides ctx.attr.compression
     compression_options: str list, overrides ctx.attr.compression_options
     debs: File list, overrides ctx.files.debs
+    rpms: File list, overrides ctx.files.rpms
     tars: File list, overrides ctx.files.tars
     architecture: str, overrides ctx.attr.architecture
     operating_system: Operating system to target (e.g. linux, windows)
@@ -397,6 +399,7 @@ def _impl(
         compression = compression,
         compression_options = compression_options,
         debs = debs,
+        rpms = rpms,
         tars = tars,
         env = env,
         operating_system = operating_system,
@@ -675,7 +678,7 @@ def _validate_command(name, argument, operating_system):
 #
 #      # The directory in which to expand the specified files,
 #      # defaulting to '/'.
-#      # Only makes sense accompanying one of files/tars/debs.
+#      # Only makes sense accompanying one of files/tars/debs/rpms.
 #      directory="...",
 #
 #      # The set of archives to expand, or packages to install
@@ -683,6 +686,7 @@ def _validate_command(name, argument, operating_system):
 #      files=[...],
 #      tars=[...],
 #      debs=[...],
+#      rpms=[...],
 #
 #      # The set of symlinks to create within a given layer.
 #      symlinks = {

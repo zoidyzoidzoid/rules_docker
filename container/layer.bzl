@@ -27,6 +27,7 @@ load(
 load(
     "//skylib:filetype.bzl",
     deb_filetype = "deb",
+    rpm_filetype = "rpm",
     tar_filetype = "tar",
 )
 load(
@@ -75,6 +76,7 @@ def build_layer(
         directory = None,
         symlinks = None,
         debs = None,
+        rpms = None,
         tars = None,
         operating_system = None):
     """Build the current layer for appending it to the base layer
@@ -90,6 +92,7 @@ def build_layer(
        directory: Directory in which to store the file inside the layer
        symlinks: List of symlinks to include in the layer
        debs: List of debian package tar files
+       rpms: List of centos package tar files
        tars: List of tar files
        operating_system: The OS (e.g., 'linux', 'windows')
 
@@ -135,6 +138,7 @@ def build_layer(
         empty_root_dirs = empty_root_dirs,
         tars = [f.path for f in tars],
         debs = [f.path for f in debs],
+        rpms = [f.path for f in rpms],
     )
     manifest_file = ctx.actions.declare_file(name + "-layer.manifest")
     ctx.actions.write(manifest_file, manifest.to_json())
@@ -143,7 +147,7 @@ def build_layer(
     ctx.actions.run(
         executable = build_layer_exec,
         arguments = [args],
-        tools = files + file_map.values() + tars + debs + [manifest_file],
+        tools = files + file_map.values() + tars + debs + rpms + [manifest_file],
         outputs = [layer],
         use_default_shell_env = True,
         mnemonic = "ImageLayer",
@@ -183,6 +187,7 @@ def _impl(
         directory = None,
         symlinks = None,
         debs = None,
+        rpms = None,
         tars = None,
         env = None,
         compression = None,
@@ -205,6 +210,7 @@ def _impl(
     compression: str, overrides ctx.attr.compression
     compression_options: str list, overrides ctx.attr.compression_options
     debs: File list, overrides ctx.files.debs
+    rpms: File list, overrides ctx.files.rpms
     tars: File list, overrides ctx.files.tars
     output_layer: File, overrides ctx.outputs.layer
   """
@@ -219,6 +225,7 @@ def _impl(
     compression = ctx.attr.compression
     compression_options = ctx.attr.compression_options
     debs = debs or ctx.files.debs
+    rpms = rpms or ctx.files.rpms
     tars = tars or ctx.files.tars
     output_layer = output_layer or ctx.outputs.layer
 
@@ -234,6 +241,7 @@ def _impl(
         directory = directory,
         symlinks = symlinks,
         debs = debs,
+        rpms = rpms,
         tars = tars,
         operating_system = operating_system,
     )
@@ -271,6 +279,7 @@ _layer_attrs = dicts.add({
     "compression_options": attr.string_list(),
     "data_path": attr.string(),
     "debs": attr.label_list(allow_files = deb_filetype),
+    "rpms": attr.label_list(allow_files = rpm_filetype),
     "directory": attr.string(default = "/"),
     "empty_dirs": attr.string_list(),
     # Implicit/Undocumented dependencies.

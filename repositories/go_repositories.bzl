@@ -40,6 +40,21 @@ def go_deps():
             commit = "221517453cf931400e6607315045445644122692",
             importpath = "github.com/google/go-containerregistry",
         )
+    if "com_github_cavaliercoder_go_rpm" not in excludes:
+        go_repository(
+            name = "com_github_cavaliercoder_go_rpm",
+            importpath = "github.com/cavaliercoder/go-rpm",
+            sum = "h1:jP7ki8Tzx9ThnFPLDhBYAhEpI2+jOURnHQNURgsMvnY=",
+            version = "v0.0.0-20200122174316-8cb9fd9c31a8",
+        )
+
+    if "org_golang_x_crypto" not in excludes:
+        go_repository(
+            name = "org_golang_x_crypto",
+            importpath = "golang.org/x/crypto",
+            sum = "h1:QmwruyY+bKbDDL0BaglrbZABEali68eoMFhTZpCjYVA=",
+            version = "v0.0.0-20200311171314-f7b00557c8c4",
+        )
     if "com_github_pkg_errors" not in excludes:
         go_repository(
             name = "com_github_pkg_errors",

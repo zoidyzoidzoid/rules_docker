@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ###
-# Synthesize a .bzl file containing the digests for a given repository.
+# Build a tar file from a list of inputs.
 
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
 go_binary(
-    name = "update_deps",
+    name = "builder",
     embed = [":go_default_library"],
     visibility = ["//visibility:public"],
 )
 
 go_library(
     name = "go_default_library",
-    srcs = ["update_deps.go"],
-    importpath = "github.com/bazelbuild/rules_docker/container/go/cmd/update_deps",
+    srcs = ["builder.go"],
+    importpath = "github.com/bazelbuild/rules_docker/container/go/cmd/builder",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_google_go_containerregistry//pkg/crane:go_default_library"],
+    deps = ["@com_github_cavaliercoder_go_rpm//:go_default_library"],
 )
