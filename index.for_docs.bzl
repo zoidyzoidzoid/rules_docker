@@ -16,21 +16,30 @@
 
 This differs from :index.bzl because we don't have wrapping macros that hide the real doc"""
 
-# image
-# bundle
-# import
-# load
-# pull
-# push
+load(
+    "//container:container.bzl",
+    _container_bundle="container_bundle",
+    _container_import="container_import",
+    _container_load="container_load",
+    _container_pull="container_pull",
+)
 load(
     "//container:image.bzl",
-    "container_image_",
-    # "container_bundle",
-    # "container_import",
-    # "container_load",
-    # "container_pull",
-    # "container_push",
+    _container_image="container_image_",
+)
+load(
+    "//container:layer.bzl",
+    _container_layer="container_layer_",
+)
+load(
+    "//container:push.bzl",
+    _container_push = "container_push",
 )
 
-container_image = container_image_
-# ANY RULES ADDED HERE SHOULD BE DOCUMENTED, run yarn stardoc to verify
+container_layer = _container_layer
+container_image = _container_image
+container_bundle = _container_bundle
+container_import = _container_import
+container_load = _container_load
+container_pull = _container_pull
+container_push = _container_push

@@ -23,10 +23,19 @@ stardoc(
         "//:bzl",
         # "//internal/node:bzl",
     ],
+    symbol_names = [
+      "container_layer",
+      "container_image",
+      "container_bundle",
+      "container_import",
+      "container_load",
+      "container_pull",
+      "container_push",
+    ],
 )
 
 stardoc(
-    name = "0roviders",
+    name = "providers",
     out = "providers.api",
     input = "//:providers.bzl",
     tags = ["fix-windows"],
@@ -34,8 +43,6 @@ stardoc(
         "//:bzl",
     ],
 )
-
-_BUILTINS_README = "# Built-in rules\n\nThese rules are available without any npm installation, via the `WORKSPACE` install of the `build_bazel_rules_docker` workspace. This is necessary to bootstrap Bazel to run the package manager to download other rules from NPM.\n\n"
 
 # Ugly genrule depending on local linux environment to build the README out of skylark doc generation.
 # Only referenced when we do a release.
@@ -47,8 +54,7 @@ genrule(
         ":providers.api",
     ],
     outs = ["builtins.doc"],
-    cmd = "echo '%s' > $@;" % _BUILTINS_README +
-          "cat $(location :builtins.api) | sed 's/^##/\\\n##/' >> $@ &&" +
+    cmd = "cat $(location :builtins.api) | sed 's/^##/\\\n##/' >> $@ &&" +
           "cat $(location :providers.api) | sed 's/^##/\\\n##/' >> $@",
     tags = ["fix-windows"],
 )
