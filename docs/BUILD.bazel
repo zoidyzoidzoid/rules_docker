@@ -62,6 +62,11 @@ genrule(
 _PACKAGE_READMES = {
     "Built-ins": ":builtins.doc",
     "CC": "//cc:cc_image.api",
+    # "Go": "//go:go_image.api",
+    "Java": "//java:java_image.api",
+    "Node.js": "//nodejs:nodejs_image.api",
+    "Python": "//python:python_image.api",
+    "Python3": "//python3:python3_image.api",
     # "Cypress": "//packages/cypress:README.md",
     # "Jasmine": "//packages/jasmine:README.md",
     # "Karma": "//packages/karma:README.md",

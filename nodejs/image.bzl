@@ -19,45 +19,10 @@ load("@bazel_skylib//lib:dicts.bzl", "dicts")
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 load("@build_bazel_rules_nodejs//:providers.bzl", "NodeRuntimeDepsInfo", "NpmPackageInfo")
 load(
-    "//container:container.bzl",
-    "container_pull",
-)
-load(
     "//lang:image.bzl",
     "app_layer",
     lang_image = "image",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
-
-# Load the resolved digests.
-load(":nodejs.bzl", "DIGESTS")
-
-def repositories():
-    """Import the dependencies of the nodejs_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    excludes = native.existing_rules().keys()
-    if "nodejs_image_base" not in excludes:
-        container_pull(
-            name = "nodejs_image_base",
-            registry = "gcr.io",
-            repository = "google-appengine/debian9",
-            digest = DIGESTS["latest"],
-        )
-    if "nodejs_debug_image_base" not in excludes:
-        container_pull(
-            name = "nodejs_debug_image_base",
-            registry = "gcr.io",
-            repository = "google-appengine/debian9",
-            digest = DIGESTS["debug"],
-        )
 
 DEFAULT_BASE = select({
     "@io_bazel_rules_docker//:debug": "@nodejs_debug_image_base//image",
@@ -118,15 +83,15 @@ def nodejs_image(
         **kwargs):
     """Constructs a container image wrapping a nodejs_binary target.
 
-  Args:
-    name: Name of the nodejs_image target.
-    base: Base image to use for the nodejs_image.
-    data: Runtime dependencies of the nodejs_image.
-    layers: Augments "deps" with dependencies that should be put into
-           their own layers.
-    binary: An alternative binary target to use instead of generating one.
-    **kwargs: See nodejs_binary.
-  """
+    Args:
+      name: Name of the nodejs_image target.
+      base: Base image to use for the nodejs_image.
+      data: Runtime dependencies of the nodejs_image.
+      layers: Augments "deps" with dependencies that should be put into
+             their own layers.
+      binary: An alternative binary target to use instead of generating one.
+      **kwargs: See nodejs_binary.
+    """
 
     if not binary:
         binary = name + ".binary"

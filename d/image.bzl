@@ -20,6 +20,9 @@ load("@io_bazel_rules_d//d:d.bzl", "d_binary")
 load(
     "//cc:image.bzl",
     "DEFAULT_BASE",
+)
+load(
+    "//cc:repositories.bzl",
     _repositories = "repositories",
 )
 load(
