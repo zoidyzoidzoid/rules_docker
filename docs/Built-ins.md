@@ -9,11 +9,6 @@ stylesheet: docs
   Instead you must edit the .bzl file where the rules are declared,
   or possibly a markdown file next to the .bzl file
  ********************* -->
-# Built-in rules
-
-These rules are available without any npm installation, via the `WORKSPACE` install of the `build_bazel_rules_nodejs` workspace. This is necessary to bootstrap Bazel to run the package manager to download other rules from NPM.
-
-
 [name]: https://bazel.build/docs/build-ref.html#name
 [label]: https://bazel.build/docs/build-ref.html#labels
 [labels]: https://bazel.build/docs/build-ref.html#labels
@@ -259,6 +254,374 @@ Defaults to `[]`
 (*String*)
 
 Defaults to `""`
+
+
+## container_import
+
+
+
+
+### Usage
+
+```
+container_import(name, base_image_digest, base_image_registry, base_image_repository, config, extract_config, incremental_load_template, layers, manifest, repository, sha256)
+```
+
+
+
+#### `name`
+(*[name], mandatory*): A unique name for this target.
+
+#### `base_image_digest`
+(*String*): The digest of the image
+
+Defaults to `""`
+
+#### `base_image_registry`
+(*String*): The registry from which we pulled the image
+
+Defaults to `""`
+
+#### `base_image_repository`
+(*String*): The repository from which we pulled the image
+
+Defaults to `""`
+
+#### `config`
+(*[label]*)
+
+Defaults to `None`
+
+#### `extract_config`
+(*[label]*)
+
+Defaults to `//container/go/cmd/extract_config:extract_config`
+
+#### `incremental_load_template`
+(*[label]*)
+
+Defaults to `//container:incremental_load_template`
+
+#### `layers`
+(*[labels], mandatory*)
+
+#### `manifest`
+(*[label]*)
+
+Defaults to `None`
+
+#### `repository`
+(*String*)
+
+Defaults to `"bazel"`
+
+#### `sha256`
+(*[label]*)
+
+Defaults to `//tools/build_defs/hash:sha256`
+
+
+## container_layer
+
+
+
+
+### Usage
+
+```
+container_layer(name, build_layer, compression, compression_options, data_path, debs, directory, empty_dirs, empty_files, enable_mtime_preservation, env, extract_config, files, incremental_load_template, mode, mtime, operating_system, portable_mtime, sha256, symlinks, tars)
+```
+
+
+
+#### `name`
+(*[name], mandatory*): A unique name for this target.
+
+#### `build_layer`
+(*[label]*)
+
+Defaults to `//container:build_tar`
+
+#### `compression`
+(*String*)
+
+Defaults to `"gzip"`
+
+#### `compression_options`
+(*List of strings*)
+
+Defaults to `[]`
+
+#### `data_path`
+(*String*)
+
+Defaults to `""`
+
+#### `debs`
+(*[labels]*)
+
+Defaults to `[]`
+
+#### `directory`
+(*String*)
+
+Defaults to `"/"`
+
+#### `empty_dirs`
+(*List of strings*)
+
+Defaults to `[]`
+
+#### `empty_files`
+(*List of strings*)
+
+Defaults to `[]`
+
+#### `enable_mtime_preservation`
+(*Boolean*)
+
+Defaults to `False`
+
+#### `env`
+(*<a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -> String</a>*)
+
+Defaults to `{}`
+
+#### `extract_config`
+(*[label]*)
+
+Defaults to `//container/go/cmd/extract_config:extract_config`
+
+#### `files`
+(*[labels]*)
+
+Defaults to `[]`
+
+#### `incremental_load_template`
+(*[label]*)
+
+Defaults to `//container:incremental_load_template`
+
+#### `mode`
+(*String*)
+
+Defaults to `"0o555"`
+
+#### `mtime`
+(*Integer*)
+
+Defaults to `-1`
+
+#### `operating_system`
+(*String*)
+
+Defaults to `"linux"`
+
+#### `portable_mtime`
+(*Boolean*)
+
+Defaults to `False`
+
+#### `sha256`
+(*[label]*)
+
+Defaults to `//tools/build_defs/hash:sha256`
+
+#### `symlinks`
+(*<a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -> String</a>*)
+
+Defaults to `{}`
+
+#### `tars`
+(*[labels]*)
+
+Defaults to `[]`
+
+
+## container_load
+
+
+
+
+### Usage
+
+```
+container_load(name, file)
+```
+
+
+
+#### `name`
+(*[name], mandatory*): A unique name for this repository.
+
+#### `file`
+(*[label], mandatory*)
+
+
+## container_pull
+
+
+
+
+### Usage
+
+```
+container_pull(name, architecture, cpu_variant, digest, docker_client_config, import_tags, os, os_features, os_version, platform_features, puller_darwin, puller_linux_amd64, puller_linux_arm64, puller_linux_s390x, registry, repository, tag)
+```
+
+
+
+#### `name`
+(*[name], mandatory*): A unique name for this repository.
+
+#### `architecture`
+(*String*): (optional) Which CPU architecture to pull if this image refers to a multi-platform manifest list, default 'amd64'.
+
+Defaults to `"amd64"`
+
+#### `cpu_variant`
+(*String*): Which CPU variant to pull if this image refers to a multi-platform manifest list.
+
+Defaults to `""`
+
+#### `digest`
+(*String*): (optional) The digest of the image to pull.
+
+Defaults to `""`
+
+#### `docker_client_config`
+(*String*): A custom directory for the docker client config.json. If DOCKER_CONFIG is not specified, the value of the DOCKER_CONFIG environment variable will be used. DOCKER_CONFIG is not defined, the home directory will be used.
+
+Defaults to `""`
+
+#### `import_tags`
+(*List of strings*): (optional) tags to be propagated to generated rules.
+
+Defaults to `[]`
+
+#### `os`
+(*String*): (optional) Which os to pull if this image refers to a multi-platform manifest list, default 'linux'.
+
+Defaults to `"linux"`
+
+#### `os_features`
+(*List of strings*): (optional) Specifies os features when pulling a multi-platform manifest list.
+
+Defaults to `[]`
+
+#### `os_version`
+(*String*): (optional) Which os version to pull if this image refers to a multi-platform manifest list.
+
+Defaults to `""`
+
+#### `platform_features`
+(*List of strings*): (optional) Specifies platform features when pulling a multi-platform manifest list.
+
+Defaults to `[]`
+
+#### `puller_darwin`
+(*[label]*): (optional) Exposed to provide a way to test other pullers on macOS
+
+Defaults to `@go_puller_darwin//file:downloaded`
+
+#### `puller_linux_amd64`
+(*[label]*): (optional) Exposed to provide a way to test other pullers on Linux
+
+Defaults to `@go_puller_linux_amd64//file:downloaded`
+
+#### `puller_linux_arm64`
+(*[label]*): (optional) Exposed to provide a way to test other pullers on Linux
+
+Defaults to `@go_puller_linux_arm64//file:downloaded`
+
+#### `puller_linux_s390x`
+(*[label]*): (optional) Exposed to provide a way to test other pullers on Linux
+
+Defaults to `@go_puller_linux_s390x//file:downloaded`
+
+#### `registry`
+(*String, mandatory*): The registry from which we are pulling.
+
+#### `repository`
+(*String, mandatory*): The name of the image.
+
+#### `tag`
+(*String*): (optional) The tag of the image, default to 'latest' if this and 'digest' remain unspecified.
+
+Defaults to `"latest"`
+
+
+## container_bundle
+
+Package several container images into a single tarball.
+
+
+### Usage
+
+```
+container_bundle(kwargs)
+```
+
+
+
+#### `kwargs`
+      
+See above.
+
+
+
+
+
+
+## container_push
+
+
+
+
+### Usage
+
+```
+container_push(name, format, image, registry, repository, kwargs)
+```
+
+
+
+#### `name`
+      
+
+
+
+
+#### `format`
+      
+
+
+
+
+#### `image`
+      
+
+
+
+
+#### `registry`
+      
+
+
+
+
+#### `repository`
+      
+
+
+
+
+#### `kwargs`
+      
+
+
+
+
 
 [name]: https://bazel.build/docs/build-ref.html#name
 [label]: https://bazel.build/docs/build-ref.html#labels

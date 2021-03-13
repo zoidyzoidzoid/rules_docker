@@ -16,7 +16,7 @@
 
 load("@bazel_skylib//lib:dicts.bzl", "dicts")
 load(
-    "@io_bazel_rules_docker//container:providers.bzl",
+    "//container:providers.bzl",
     "FilterAspectInfo",
     "FilterLayerInfo",
 )
@@ -270,7 +270,7 @@ image = struct(
         "workdir": attr.string(default = ""),
     }),
     outputs = _container.image.outputs,
-    toolchains = ["@io_bazel_rules_docker//toolchains/docker:toolchain_type"],
+    toolchains = ["@//toolchains/docker:toolchain_type"],
     implementation = _app_layer_impl,
 )
 

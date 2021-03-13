@@ -17,7 +17,7 @@ Bazel rule for publishing images.
 """
 
 load("@bazel_skylib//lib:dicts.bzl", "dicts")
-load("@io_bazel_rules_docker//container:providers.bzl", "PushInfo")
+load("//container:providers.bzl", "PushInfo")
 load(
     "//container:layer_tools.bzl",
     _gen_img_args = "generate_args_for_image",
