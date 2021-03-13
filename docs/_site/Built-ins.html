@@ -140,9 +140,6 @@
   Instead you must edit the .bzl file where the rules are declared,
   or possibly a markdown file next to the .bzl file
  ********************* -->
-<h1 id="built-in-rules">Built-in rules</h1>
-
-<p>These rules are available without any npm installation, via the <code class="language-plaintext highlighter-rouge">WORKSPACE</code> install of the <code class="language-plaintext highlighter-rouge">build_bazel_rules_nodejs</code> workspace. This is necessary to bootstrap Bazel to run the package manager to download other rules from NPM.</p>
 
 <h2 id="container_image">container_image</h2>
 
@@ -378,6 +375,305 @@
 <p>(<em>String</em>)</p>
 
 <p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h2 id="container_import">container_import</h2>
+
+<h3 id="usage-1">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_import(name, base_image_digest, base_image_registry, base_image_repository, config, extract_config, incremental_load_template, layers, manifest, repository, sha256)
+</code></pre></div></div>
+
+<h4 id="name-1"><code class="language-plaintext highlighter-rouge">name</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#name">name</a>, mandatory</em>): A unique name for this target.</p>
+
+<h4 id="base_image_digest"><code class="language-plaintext highlighter-rouge">base_image_digest</code></h4>
+<p>(<em>String</em>): The digest of the image</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="base_image_registry"><code class="language-plaintext highlighter-rouge">base_image_registry</code></h4>
+<p>(<em>String</em>): The registry from which we pulled the image</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="base_image_repository"><code class="language-plaintext highlighter-rouge">base_image_repository</code></h4>
+<p>(<em>String</em>): The repository from which we pulled the image</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="config"><code class="language-plaintext highlighter-rouge">config</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">None</code></p>
+
+<h4 id="extract_config-1"><code class="language-plaintext highlighter-rouge">extract_config</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container/go/cmd/extract_config:extract_config</code></p>
+
+<h4 id="incremental_load_template-1"><code class="language-plaintext highlighter-rouge">incremental_load_template</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container:incremental_load_template</code></p>
+
+<h4 id="layers-1"><code class="language-plaintext highlighter-rouge">layers</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a>, mandatory</em>)</p>
+
+<h4 id="manifest"><code class="language-plaintext highlighter-rouge">manifest</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">None</code></p>
+
+<h4 id="repository-1"><code class="language-plaintext highlighter-rouge">repository</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"bazel"</code></p>
+
+<h4 id="sha256-1"><code class="language-plaintext highlighter-rouge">sha256</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//tools/build_defs/hash:sha256</code></p>
+
+<h2 id="container_layer">container_layer</h2>
+
+<h3 id="usage-2">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_layer(name, build_layer, compression, compression_options, data_path, debs, directory, empty_dirs, empty_files, enable_mtime_preservation, env, extract_config, files, incremental_load_template, mode, mtime, operating_system, portable_mtime, sha256, symlinks, tars)
+</code></pre></div></div>
+
+<h4 id="name-2"><code class="language-plaintext highlighter-rouge">name</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#name">name</a>, mandatory</em>): A unique name for this target.</p>
+
+<h4 id="build_layer-1"><code class="language-plaintext highlighter-rouge">build_layer</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container:build_tar</code></p>
+
+<h4 id="compression-1"><code class="language-plaintext highlighter-rouge">compression</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"gzip"</code></p>
+
+<h4 id="compression_options-1"><code class="language-plaintext highlighter-rouge">compression_options</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="data_path-1"><code class="language-plaintext highlighter-rouge">data_path</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="debs-1"><code class="language-plaintext highlighter-rouge">debs</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="directory-1"><code class="language-plaintext highlighter-rouge">directory</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"/"</code></p>
+
+<h4 id="empty_dirs-1"><code class="language-plaintext highlighter-rouge">empty_dirs</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="empty_files-1"><code class="language-plaintext highlighter-rouge">empty_files</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="enable_mtime_preservation-1"><code class="language-plaintext highlighter-rouge">enable_mtime_preservation</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="env-1"><code class="language-plaintext highlighter-rouge">env</code></h4>
+<p>(<em><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">{}</code></p>
+
+<h4 id="extract_config-2"><code class="language-plaintext highlighter-rouge">extract_config</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container/go/cmd/extract_config:extract_config</code></p>
+
+<h4 id="files-1"><code class="language-plaintext highlighter-rouge">files</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="incremental_load_template-2"><code class="language-plaintext highlighter-rouge">incremental_load_template</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container:incremental_load_template</code></p>
+
+<h4 id="mode-1"><code class="language-plaintext highlighter-rouge">mode</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"0o555"</code></p>
+
+<h4 id="mtime-1"><code class="language-plaintext highlighter-rouge">mtime</code></h4>
+<p>(<em>Integer</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">-1</code></p>
+
+<h4 id="operating_system-1"><code class="language-plaintext highlighter-rouge">operating_system</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"linux"</code></p>
+
+<h4 id="portable_mtime-1"><code class="language-plaintext highlighter-rouge">portable_mtime</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="sha256-2"><code class="language-plaintext highlighter-rouge">sha256</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//tools/build_defs/hash:sha256</code></p>
+
+<h4 id="symlinks-1"><code class="language-plaintext highlighter-rouge">symlinks</code></h4>
+<p>(<em><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">{}</code></p>
+
+<h4 id="tars-1"><code class="language-plaintext highlighter-rouge">tars</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h2 id="container_load">container_load</h2>
+
+<h3 id="usage-3">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_load(name, file)
+</code></pre></div></div>
+
+<h4 id="name-3"><code class="language-plaintext highlighter-rouge">name</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#name">name</a>, mandatory</em>): A unique name for this repository.</p>
+
+<h4 id="file"><code class="language-plaintext highlighter-rouge">file</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a>, mandatory</em>)</p>
+
+<h2 id="container_pull">container_pull</h2>
+
+<h3 id="usage-4">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_pull(name, architecture, cpu_variant, digest, docker_client_config, import_tags, os, os_features, os_version, platform_features, puller_darwin, puller_linux_amd64, puller_linux_arm64, puller_linux_s390x, registry, repository, tag)
+</code></pre></div></div>
+
+<h4 id="name-4"><code class="language-plaintext highlighter-rouge">name</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#name">name</a>, mandatory</em>): A unique name for this repository.</p>
+
+<h4 id="architecture-1"><code class="language-plaintext highlighter-rouge">architecture</code></h4>
+<p>(<em>String</em>): (optional) Which CPU architecture to pull if this image refers to a multi-platform manifest list, default ‘amd64’.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"amd64"</code></p>
+
+<h4 id="cpu_variant"><code class="language-plaintext highlighter-rouge">cpu_variant</code></h4>
+<p>(<em>String</em>): Which CPU variant to pull if this image refers to a multi-platform manifest list.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="digest"><code class="language-plaintext highlighter-rouge">digest</code></h4>
+<p>(<em>String</em>): (optional) The digest of the image to pull.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="docker_client_config"><code class="language-plaintext highlighter-rouge">docker_client_config</code></h4>
+<p>(<em>String</em>): A custom directory for the docker client config.json. If DOCKER_CONFIG is not specified, the value of the DOCKER_CONFIG environment variable will be used. DOCKER_CONFIG is not defined, the home directory will be used.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="import_tags"><code class="language-plaintext highlighter-rouge">import_tags</code></h4>
+<p>(<em>List of strings</em>): (optional) tags to be propagated to generated rules.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="os"><code class="language-plaintext highlighter-rouge">os</code></h4>
+<p>(<em>String</em>): (optional) Which os to pull if this image refers to a multi-platform manifest list, default ‘linux’.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"linux"</code></p>
+
+<h4 id="os_features"><code class="language-plaintext highlighter-rouge">os_features</code></h4>
+<p>(<em>List of strings</em>): (optional) Specifies os features when pulling a multi-platform manifest list.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="os_version-1"><code class="language-plaintext highlighter-rouge">os_version</code></h4>
+<p>(<em>String</em>): (optional) Which os version to pull if this image refers to a multi-platform manifest list.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="platform_features"><code class="language-plaintext highlighter-rouge">platform_features</code></h4>
+<p>(<em>List of strings</em>): (optional) Specifies platform features when pulling a multi-platform manifest list.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="puller_darwin"><code class="language-plaintext highlighter-rouge">puller_darwin</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>): (optional) Exposed to provide a way to test other pullers on macOS</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">@go_puller_darwin//file:downloaded</code></p>
+
+<h4 id="puller_linux_amd64"><code class="language-plaintext highlighter-rouge">puller_linux_amd64</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>): (optional) Exposed to provide a way to test other pullers on Linux</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">@go_puller_linux_amd64//file:downloaded</code></p>
+
+<h4 id="puller_linux_arm64"><code class="language-plaintext highlighter-rouge">puller_linux_arm64</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>): (optional) Exposed to provide a way to test other pullers on Linux</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">@go_puller_linux_arm64//file:downloaded</code></p>
+
+<h4 id="puller_linux_s390x"><code class="language-plaintext highlighter-rouge">puller_linux_s390x</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>): (optional) Exposed to provide a way to test other pullers on Linux</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">@go_puller_linux_s390x//file:downloaded</code></p>
+
+<h4 id="registry"><code class="language-plaintext highlighter-rouge">registry</code></h4>
+<p>(<em>String, mandatory</em>): The registry from which we are pulling.</p>
+
+<h4 id="repository-2"><code class="language-plaintext highlighter-rouge">repository</code></h4>
+<p>(<em>String, mandatory</em>): The name of the image.</p>
+
+<h4 id="tag"><code class="language-plaintext highlighter-rouge">tag</code></h4>
+<p>(<em>String</em>): (optional) The tag of the image, default to ‘latest’ if this and ‘digest’ remain unspecified.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"latest"</code></p>
+
+<h2 id="container_bundle">container_bundle</h2>
+
+<p>Package several container images into a single tarball.</p>
+
+<h3 id="usage-5">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_bundle(kwargs)
+</code></pre></div></div>
+
+<h4 id="kwargs"><code class="language-plaintext highlighter-rouge">kwargs</code></h4>
+
+<p>See above.</p>
+
+<h2 id="container_push">container_push</h2>
+
+<h3 id="usage-6">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_push(name, format, image, registry, repository, kwargs)
+</code></pre></div></div>
+
+<h4 id="name-5"><code class="language-plaintext highlighter-rouge">name</code></h4>
+
+<h4 id="format"><code class="language-plaintext highlighter-rouge">format</code></h4>
+
+<h4 id="image"><code class="language-plaintext highlighter-rouge">image</code></h4>
+
+<h4 id="registry-1"><code class="language-plaintext highlighter-rouge">registry</code></h4>
+
+<h4 id="repository-3"><code class="language-plaintext highlighter-rouge">repository</code></h4>
+
+<h4 id="kwargs-1"><code class="language-plaintext highlighter-rouge">kwargs</code></h4>
 
 
         </div>

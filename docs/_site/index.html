@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - rules_docker</title>
+
+    <!-- When we have javascript.bazel.build, we may want this:
+    script>
+      var current_url = window.location.href;
+      var bad_url = new RegExp("^https?://bazelbuild.github.io/skydoc/");
+      if (bad_url.test(current_url)) {
+        window.location.replace(current_url.replace(bad_url, "https://skydoc.bazel.build/"));
+      }
+    </script-->
+
+    <link rel="canonical" href="https://github.com/bazelbuild/rules_docker/">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="css/docs.css">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico">
+
+    <!-- metadata -->
+    <meta name="og:title" content="rules_docker"/>
+    <meta name="og:description" content="Rules for building and handling Docker images with Bazel"/>
+  </head>
+
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+      mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Home</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://github.com/bazelbuild/rules_docker">GitHub</a>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+          for="cse-search-box">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text"
+            id="cse-search-box">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+      <a href="index.html">Bazel Docker</a>
+    </span>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <span class="drawer-nav-title">Documentation</span>
+          <ul>
+            <li><a href="install.html">Installing</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="Built-ins.html">Built-in rules</a></li>
+            <li><a href="repositories.html">Generated repositories</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">CSS Preprocessors</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_sass/blob/master/README.md">Sass <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">JavaScript Preprocessors</span>
+          <ul>
+            <li><a href="TypeScript.html">TypeScript</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Bundlers</span>
+          <ul>
+            <li><a href="Rollup.html">Rollup</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Optimizers</span>
+          <ul>
+            <li><a href="Terser.html">Terser</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Frameworks</span>
+          <ul>
+            <li><a href="examples.html#angular">Angular</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Testing</span>
+          <ul>
+            <li><a href="Cypress.html">Cypress</a></li>
+            <li><a href="Karma.html">Karma</a></li>
+            <li><a href="Protractor.html">Protractor</a></li>
+            <li><a href="Jasmine.html">Jasmine</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Deployment</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker#nodejs_image">Docker <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Get Involved</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker/blob/master/CONTRIBUTING.md">Contribute to rules_docker</a></li>
+            <li><a href="https://slack.bazel.build/">Join #javascript on Bazel Slack</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker/issues">Issue tracker</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          
+          <h1 class="page-title">Home</h1>
+          
+
+          <p>TODO</p>
+
+<h1 id="bazel-javascript-rules">Bazel JavaScript rules</h1>
+
+<p>Bazel is Google’s build system.
+It powers our development at large scale by caching intermediate build artifacts,
+allowing build and test to be incremental and massively parallelizable.
+Read more at <a href="https://bazel.build">https://bazel.build</a></p>
+
+<p>This JavaScript support lets you build and test code that targets a JavaScript runtime, including NodeJS and browsers.</p>
+
+<h2 id="quickstart">Quickstart</h2>
+
+<p>First we create a new workspace, which will be in a new directory.
+We can use the <code class="language-plaintext highlighter-rouge">@bazel/create</code> npm package to do this in one command.
+This is the fastest way to get started for most use cases.</p>
+
+<blockquote>
+  <p>See <a href="install.html">the installation page</a> for details and alternative methods.</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm init @bazel my_workspace
+<span class="nv">$ </span><span class="nb">cd </span>my_workspace
+</code></pre></div></div>
+
+<blockquote>
+  <p>You could do the same thing with yarn:</p>
+  <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn create @bazel my_workspace
+<span class="nv">$ </span><span class="nb">cd </span>my_workspace
+</code></pre></div>  </div>
+  <p>Both of these commands are equivalent to <code class="language-plaintext highlighter-rouge">npx @bazel/create</code> which downloads the latest version of the <code class="language-plaintext highlighter-rouge">@bazel/create</code> package from npm and runs the program it contains.
+Run the tool with no arguments for command-line options and next steps.</p>
+</blockquote>
+
+<p>Next we install some development tools.
+For this example, we’ll use Babel to transpile our JavaScript, Mocha for running tests, and http-server to serve our app.
+This is just an arbitrary choice, you probably already have some tools you prefer.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> @babel/core @babel/cli @babel/preset-env http-server mocha domino
+</code></pre></div></div>
+
+<p>Let’s run these tools with Bazel. There are two ways to run tools:</p>
+
+<ul>
+  <li>Use an auto-generated Bazel rule by importing from an <code class="language-plaintext highlighter-rouge">index.bzl</code> file in the npm package</li>
+  <li>Use a custom rule in rules_docker or write one yourself</li>
+</ul>
+
+<p>In this example we use the auto-generated rules.
+First we need to import them, using a load statement.
+So edit BUILD.bazel and add:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@npm//@babel/cli:index.bzl"</span><span class="p">,</span> <span class="s">"babel"</span><span class="p">)</span>
+<span class="n">load</span><span class="p">(</span><span class="s">"@npm//mocha:index.bzl"</span><span class="p">,</span> <span class="s">"mocha_test"</span><span class="p">)</span>
+<span class="n">load</span><span class="p">(</span><span class="s">"@npm//http-server:index.bzl"</span><span class="p">,</span> <span class="s">"http_server"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>This shows us that rules_docker has told Bazel that a workspace named @npm is available
+(think of the at-sign like a scoped package for Bazel).
+rules_docker will add index.bzl files exposing all the binaries the package manager installed
+(the same as the content of the node_modules/.bin folder).
+The three tools we installed are in this @npm scope and each has an index file with a .bzl extension.</p>
+</blockquote>
+
+<p>Next we teach Bazel how to transform our JavaScript inputs into transpiled outputs.
+Here we assume that you have <code class="language-plaintext highlighter-rouge">app.js</code> and <code class="language-plaintext highlighter-rouge">es5.babelrc</code> in your project. See <a href="https://github.com/bazelbuild/rules_docker/tree/1.4.0/examples/webapp">our example webapp</a> for an example of what those files might look like.
+Now we want Babel to produce <code class="language-plaintext highlighter-rouge">app.es5.js</code> so we add to <code class="language-plaintext highlighter-rouge">BUILD.bazel</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">babel</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"compile"</span><span class="p">,</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">"app.js"</span><span class="p">,</span>
+        <span class="s">"es5.babelrc"</span><span class="p">,</span>
+        <span class="s">"@npm//@babel/preset-env"</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">outs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"app.es5.js"</span><span class="p">],</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">"app.js"</span><span class="p">,</span>
+        <span class="s">"--config-file"</span><span class="p">,</span>
+        <span class="s">"$(execpath es5.babelrc)"</span><span class="p">,</span>
+        <span class="s">"--out-file"</span><span class="p">,</span>
+        <span class="s">"$(execpath app.es5.js)"</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>This just calls the Babel CLI, so you can see <a href="https://babeljs.io/docs/en/babel-cli">their documentation</a> for what arguments to pass.
+We use the $(execpath) helper in Bazel so we don’t need to hardcode paths to the inputs or outputs.</p>
+</blockquote>
+
+<p>We can now build the application: <code class="language-plaintext highlighter-rouge">npm run build</code></p>
+
+<p>and we see the .js outputs from babel appear in the <code class="language-plaintext highlighter-rouge">dist/bin</code> folder.</p>
+
+<p>Let’s serve the app to see how it looks, by adding to <code class="language-plaintext highlighter-rouge">BUILD.bazel</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http_server(
+    name = "server",
+    data = [
+        "index.html",
+        "app.es5.js",
+    ],
+    args = ["."],
+)
+</code></pre></div></div>
+
+<p>Add a <code class="language-plaintext highlighter-rouge">serve</code> entry to the scripts in <code class="language-plaintext highlighter-rouge">package.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"serve"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ibazel run :server"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>ibazel is the watch mode for bazel.</p>
+
+  <p>Note that on Windows, you need to pass <code class="language-plaintext highlighter-rouge">--enable_runfiles</code> flag to Bazel.
+That’s because Bazel creates a directory where inputs and outputs both appear together, for convenience.</p>
+</blockquote>
+
+<p>Now we can serve the app: <code class="language-plaintext highlighter-rouge">npm run serve</code></p>
+
+<p>Finally we’ll add a test using Mocha, and the domino package so we don’t need a browser. Add to <code class="language-plaintext highlighter-rouge">BUILD.bazel</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mocha_test</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"unit_tests"</span><span class="p">,</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s">"*.spec.js"</span><span class="p">],</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">glob</span><span class="p">([</span><span class="s">"*.spec.js"</span><span class="p">])</span> <span class="o">+</span> <span class="p">[</span>
+        <span class="s">"@npm//domino"</span><span class="p">,</span>
+        <span class="s">"app.es5.js"</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Run the tests: <code class="language-plaintext highlighter-rouge">npm test</code></p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Look through the <code class="language-plaintext highlighter-rouge">/examples</code> directory in this repo for many examples of running tools under Bazel.</p>
+
+<p>You might want to look through the API docs for custom rules such as TypeScript, Rollup, and Terser which add support beyond what you get from calling the CLI of those tools.</p>
+
+<h3 id="debugging">Debugging</h3>
+
+<p>Add the options in the <code class="language-plaintext highlighter-rouge">Support for debugging NodeJS tests</code> section from https://github.com/bazelbuild/rules_docker/blob/master/common.bazelrc to your project’s <code class="language-plaintext highlighter-rouge">.bazelrc</code> file to add support for debugging NodeJS programs.</p>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">--config=debug</code> command line option with bazel will set a number of flags that are specified there are useful for debugging. See the comments under <code class="language-plaintext highlighter-rouge">Support for debugging NodeJS tests</code> for details on the flags that are set.</p>
+
+<p>Use  <code class="language-plaintext highlighter-rouge">--config=debug</code> with <code class="language-plaintext highlighter-rouge">bazel test</code> as follow,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel test --config=debug //test:...
+</code></pre></div></div>
+
+<p>or with <code class="language-plaintext highlighter-rouge">bazel run</code>,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel run --config=debug //test:test1
+</code></pre></div></div>
+
+<p>to also turn on the NodeJS inspector agent which will break before any user code starts. You should then see,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Executing tests from //test:test1
+-----------------------------------------------------------------------------
+Debugger listening on ws://127.0.0.1:9229/3f20777a-242c-4d18-b88b-5ed4b3fed61c
+For help, see: https://nodejs.org/en/docs/inspector
+</code></pre></div></div>
+
+<p>when the test is run.</p>
+
+<p>To inspect with Chrome DevTools 55+, open <code class="language-plaintext highlighter-rouge">chrome://inspect</code> in a Chromium-based browser and attach to the waiting process.
+A Chrome DevTools window should open and you should see <code class="language-plaintext highlighter-rouge">Debugger attached.</code> in the console.</p>
+
+<p>See https://nodejs.org/en/docs/guides/debugging-getting-started/ for more details.</p>
+
+<h3 id="debugging-with-vs-code">Debugging with VS Code</h3>
+
+<p>With the above configuration you can use VS Code as your debugger.
+You will first need to configure your <code class="language-plaintext highlighter-rouge">.vscode/launch.json</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+      "type": "node",
+      "request": "attach",
+      "name": "Attach nodejs_binary",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMapPathOverrides": {
+        "../*": "${workspaceRoot}/*",
+        "../../*": "${workspaceRoot}/*",
+        "../../../*": "${workspaceRoot}/*",
+        "../../../../*": "${workspaceRoot}/*",
+        "../../../../../*": "${workspaceRoot}/*",
+        // do as many levels here as needed for your project
+      }
+</code></pre></div></div>
+<p>We use <code class="language-plaintext highlighter-rouge">sourceMapPathOverrides</code> here to rewrite the source maps produced by <code class="language-plaintext highlighter-rouge">ts_library</code> so that breakpoints line up with the source maps.
+Once configured start your process with</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bazel run --config=debug //test:test1
+</code></pre></div></div>
+<p>Then hit <code class="language-plaintext highlighter-rouge">F5</code> which will start the VS Code debugger with the <code class="language-plaintext highlighter-rouge">Attach nodejs_binary</code> configuration.
+VS Code will immediatenly hit a breakpoint to which you can continue and debug using all the normal debug features provided.</p>
+
+<h3 id="stamping">Stamping</h3>
+
+<p>Bazel is generally only a build tool, and is unaware of your version control system.
+However, when publishing releases, you typically want to embed version information in the resulting distribution.
+Bazel supports this natively, using the following approach:</p>
+
+<p>To stamp a build, you must pass the <code class="language-plaintext highlighter-rouge">--stamp</code> argument to Bazel.</p>
+
+<blockquote>
+  <p>Previous releases of rules_docker stamped builds always.
+However this caused stamp-aware actions to never be remotely cached, since the volatile
+status file is passed as an input and its checksum always changes.</p>
+</blockquote>
+
+<p>Also pass the <code class="language-plaintext highlighter-rouge">workspace_status_command</code> argument to <code class="language-plaintext highlighter-rouge">bazel build</code>.
+We prefer to do these with an entry in <code class="language-plaintext highlighter-rouge">.bazelrc</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This tells Bazel how to interact with the version control system</span>
+<span class="c"># Enable this with --config=release</span>
+build:release <span class="nt">--stamp</span> <span class="nt">--workspace_status_command</span><span class="o">=</span>./tools/bazel_stamp_vars.sh
+</code></pre></div></div>
+
+<p>Then create <code class="language-plaintext highlighter-rouge">tools/bazel_stamp_vars.sh</code>.</p>
+
+<p>This is a script that prints variable/value pairs.
+Make sure you set the executable bit, eg. <code class="language-plaintext highlighter-rouge">chmod 755 tools/bazel_stamp_vars.sh</code>.
+For example, we could run <code class="language-plaintext highlighter-rouge">git describe</code> to get the current tag:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+<span class="nb">echo </span>BUILD_SCM_VERSION <span class="si">$(</span>git describe <span class="nt">--abbrev</span><span class="o">=</span>7 <span class="nt">--tags</span> HEAD<span class="si">)</span>
+</code></pre></div></div>
+
+<p>For a more full-featured script, take a look at the <a href="https://github.com/angular/angular/blob/master/tools/bazel_stamp_vars.sh">bazel_stamp_vars in Angular</a></p>
+
+<p>Finally, we recommend a release script around Bazel. We typically have more than one npm package published from one Bazel workspace, so we do a <code class="language-plaintext highlighter-rouge">bazel query</code> to find them, and publish in a loop. Here is a template to get you started:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> <span class="nt">-u</span> <span class="nt">-e</span> <span class="nt">-o</span> pipefail
+
+<span class="c"># Call the script with argument "pack" or "publish"</span>
+<span class="nb">readonly </span><span class="nv">NPM_COMMAND</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">publish</span><span class="k">}</span>
+<span class="c"># Don't rely on $PATH to have the right version</span>
+<span class="nb">readonly </span><span class="nv">BAZEL_BIN</span><span class="o">=</span>./node_modules/.bin/bazel
+<span class="c"># Use a new output_base so we get a clean build</span>
+<span class="c"># Bazel can't know if the git metadata changed</span>
+<span class="nb">readonly </span><span class="nv">TMP</span><span class="o">=</span><span class="si">$(</span><span class="nb">mktemp</span> <span class="nt">-d</span> <span class="nt">-t</span> bazel-release.XXXXXXX<span class="si">)</span>
+<span class="nb">readonly </span><span class="nv">BAZEL</span><span class="o">=</span><span class="s2">"</span><span class="nv">$BAZEL_BIN</span><span class="s2"> --output_base=</span><span class="nv">$TMP</span><span class="s2">"</span>
+<span class="c"># Find all the npm packages in the repo</span>
+<span class="nb">readonly </span><span class="nv">PKG_NPM_LABELS</span><span class="o">=</span><span class="sb">`</span><span class="nv">$BAZEL</span> query <span class="nt">--output</span><span class="o">=</span>label <span class="s1">'kind("pkg_npm", //...)'</span><span class="sb">`</span>
+<span class="c"># Build them in one command to maximize parallelism</span>
+<span class="nv">$BAZEL</span> build <span class="nt">--config</span><span class="o">=</span>release <span class="nv">$PKG_NPM_LABELS</span>
+<span class="c"># publish one package at a time to make it easier to spot any errors or warnings</span>
+<span class="k">for </span>pkg <span class="k">in</span> <span class="nv">$PKG_NPM_LABELS</span> <span class="p">;</span> <span class="k">do</span>
+  <span class="nv">$BAZEL</span> run <span class="nt">--config</span><span class="o">=</span>release <span class="nt">--</span> <span class="k">${</span><span class="nv">pkg</span><span class="k">}</span>.<span class="k">${</span><span class="nv">NPM_COMMAND</span><span class="k">}</span> <span class="nt">--access</span> public <span class="nt">--tag</span> latest
+<span class="k">done</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>WARNING: Bazel can’t track changes to git tags. That means it won’t rebuild a target if only the result of the workspace_status_command has changed. So changes to the version information may not be reflected if you re-build the package or bundle, and nothing in the package or bundle has changed.</p>
+</blockquote>
+
+<p>See https://www.kchodorow.com/blog/2017/03/27/stamping-your-builds/ for more background.</p>
+
+<h1 id="making-changes-to-rules_docker">Making changes to rules_docker</h1>
+
+<p>One advantage of open-source software is that you can make your own changes that suit your needs.</p>
+
+<p>The packages published to npm and GitHub differ from the sources in this repo. The packages have only runtime bazel dependencies, but the sources depend on development dependencies. For example, the <code class="language-plaintext highlighter-rouge">@bazel_skylib</code> library is a development-time transitive dependency, while an npm package would have that dependency statically linked in.</p>
+
+<blockquote>
+  <p>This differs from much of the Bazel ecosystem, where you are expected to build the whole transitive toolchain from sources.</p>
+</blockquote>
+
+<p>If you have a small change, it’s easiest to just patch the distributed artifacts rather than build from source. However if you’re doing active development in rules_docker or have a policy of not depending on release artifacts, it’s possible to depend directly on sources. This is not yet documented; file an issue on our repo if you think you need this.</p>
+
+<h2 id="patching-the-npm-packages">Patching the npm packages</h2>
+
+<p>The pattern we use most commonly is to add a <code class="language-plaintext highlighter-rouge">postinstall</code> hook to your <code class="language-plaintext highlighter-rouge">package.json</code> that patches files after they’ve been fetched from npm.</p>
+
+<p>See <code class="language-plaintext highlighter-rouge">/tools/postinstall-patches.js</code> in the <a href="https://github.com/angular/angular/tree/master/tools/postinstall-patches.js">Angular repo</a> for an example.</p>
+
+<h2 id="patching-the-built-in-release">Patching the built-in release</h2>
+
+<p>rules_docker has a distribution format which is a tgz published to GitHub, and this can make it tricky to make casual changes without forking the project and building your own release artifacts.</p>
+
+<p>Bazel has a handy patching mechanism that lets you easily apply a local patch to the release artifact for built-in rules: the <code class="language-plaintext highlighter-rouge">patches</code> attribute to <code class="language-plaintext highlighter-rouge">http_archive</code>.</p>
+
+<p>First, make your changes in a clone of the rules_docker repo. Export a patch file simply using <code class="language-plaintext highlighter-rouge">git diff</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="o">&gt;</span> my.patch
+</code></pre></div></div>
+
+<p>Then copy the patch file somewhere in your repo and point to it from your <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">http_archive</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"build_bazel_rules_docker"</span><span class="p">,</span>
+    <span class="n">patch_args</span> <span class="o">=</span> <span class="p">[</span><span class="s">"-p1"</span><span class="p">],</span>
+    <span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//path/to/my.patch"</span><span class="p">],</span>
+    <span class="n">sha256</span> <span class="o">=</span> <span class="s">"6d4edbf28ff6720aedf5f97f9b9a7679401bf7fca9d14a0fff80f644a99992b4"</span><span class="p">,</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">"https://github.com/bazelbuild/rules_docker/releases/download/0.32.2/rules_docker-0.32.2.tar.gz"</span><span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="scope-of-the-project">Scope of the project</h1>
+
+<p>This repository contains an orthogonal set of rules which covers an opinionated toolchain for JavaScript development. When requesting a new rule, describe your use case, why it’s important, and why you can’t do it with the existing rules. This is because we have limited resources to maintain additional rules.</p>
+
+<p>The repository accepts contributions in terms of bug fixes or implementing new features in existing rules. If you’re planning to implement a new rule, please strongly consider opening a <a href="https://github.com/bazelbuild/rules_docker/issues/new">feature request</a> first so the project’s maintainers can decide if it belongs to the scope of this project or not.</p>
+
+<p>For rules outside of the scope of the projects we recommend hosting them in your GitHub account or the one of your organization.</p>
+
+<h1 id="design">Design</h1>
+
+<p>Most bazel rules include package management. That is, the <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file installs your dependencies as well as the toolchain. In some environments, this is the normal workflow, for example in Java, Gradle and Maven are each both a build tool and a package manager.</p>
+
+<p>In nodejs, there are a variety of package managers and build tools which can interoperate. Also, there is a well-known package installation location (<code class="language-plaintext highlighter-rouge">node_modules</code> directory in your project). Command-line and other tools look in this directory to find packages. So we must either download packages twice (risking version skew between them) or point all tools to Bazel’s <code class="language-plaintext highlighter-rouge">external</code> directory with <code class="language-plaintext highlighter-rouge">NODE_PATH</code> which would be very inconvenient.</p>
+
+<p>Instead, our philosophy is: in the NodeJS ecosystem, Bazel is only a build tool. It is up to the user to install packages into their <code class="language-plaintext highlighter-rouge">node_modules</code> directory, though the build tool can verify the contents.</p>
+
+<h2 id="hermeticity-and-reproducibility">Hermeticity and reproducibility</h2>
+
+<p>Bazel generally guarantees builds are correct with respect to their inputs. For example, this means that given the same source tree, you can re-build the same artifacts as an earlier release of your program. In the nodejs rules, Bazel is not the package manager, so some responsibility falls to the developer to avoid builds that use the wrong dependencies. This problem exists with any build system in the JavaScript ecosystem.</p>
+
+<p>Both NPM and Yarn have a lockfile, which ensures that dependencies only change when the lockfile changes. Users are <em>strongly encouraged</em> to use the locking mechanism in their package manager.</p>
+
+<p>References:</p>
+
+<ul>
+  <li>npm: https://docs.npmjs.com/files/package-lock.json</li>
+  <li>yarn: https://yarnpkg.com/lang/en/docs/yarn-lock/</li>
+</ul>
+
+<p>Note that https://github.com/bazelbuild/rules_docker/issues/1 will take the guarantee further: by using the lockfile as an input to Bazel, the nodejs rules can verify the integrity of the dependencies. This would make it impossible for a build to be non-reproducible, so long as you have the same lockfile.</p>
+
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">&copy; 2019 Google, Inc.</div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="#"
+        id="scroll-to-top">
+        Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    var shiftWindow = function() {
+      if (location.hash.length !== 0) {
+        window.scrollBy(0, -50);
+      }
+    };
+    window.addEventListener("hashchange", shiftWindow);
+
+    var highlightCurrentSidebarNav = function() {
+      var href = location.pathname;
+      var item = $('.drawer-nav [href$="' + href + '"]');
+      if (item) {
+        var li = item.parent();
+        li.addClass("active");
+      }
+    };
+
+    /**
+     * Creates a CSE search form and submits the search query.
+     *
+     * Since the Material Design Lite header expandable text field does not
+     * support having a <form> element around the <input> element, we need to
+     * capture the ENTER keypress and then submit the form using this handler.
+     */
+    var submitSearch = function(query) {
+      var form = document.createElement("form");
+      form.setAttribute("action", "search.html");
+
+      var cseParams = {
+        "cx": "008327220137350982602:0mpaowwcmvg",
+        "cof": "FORID:10",
+        "ie": "UTF-8",
+      };
+      for (key in cseParams) {
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", key);
+        hidden.setAttribute("value", cseParams[key]);
+        form.appendChild(hidden);
+      }
+
+      var text = document.createElement("input");
+      text.setAttribute("type", "text");
+      text.setAttribute("name", "q");
+      text.setAttribute("value", query);
+      form.appendChild(text);
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    function setAnchors() {
+      const headerSelectors = ['h1', 'h2', 'h3'];
+
+      headerSelectors.forEach(selector => {
+        const headers = document.querySelectorAll(selector)
+        headers.forEach(header => {
+          anchor = document.createElement('a');
+          // headers id's are already set by jykell
+          const id = header.getAttribute('id');
+          if(id) {
+            anchor.href = '#' + id;
+            anchor.innerText = '# '
+            header.prepend(anchor);
+          }
+        });
+
+      })
+      
+    }
+
+    $(document).ready(function() {
+      // Scroll to anchor of location hash, adjusted for fixed navbar.
+      window.setTimeout(function() {
+        shiftWindow();
+      }, 1);
+
+      // Highlight the current item on the sidebar.
+      highlightCurrentSidebarNav();
+
+      // setup anchors
+      setAnchors();
+
+      // Handler to capture the ENTER keypress for the CSE search input
+      // in the page header and then call submitSearch() to submit the search
+      // query.
+      $("#cse-search-box").keyup(function(e) {
+        if (e.keyCode == 13) {
+          let query = $("#cse-search-box").val();
+          submitSearch(query);
+        }
+      });
+
+      // Handler for the Scroll to Top link in the page footer to scroll the
+      // main content back to the top.
+      $("#scroll-to-top").click(function() {
+        $(".mdl-layout__content").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+    });
+  </script>
+
+  <!-- Google Analytics tracking code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61082125-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+      </main>
+    </div>
+  </body>
+</html>

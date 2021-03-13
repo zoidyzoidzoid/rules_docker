@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Examples - rules_docker</title>
+
+    <!-- When we have javascript.bazel.build, we may want this:
+    script>
+      var current_url = window.location.href;
+      var bad_url = new RegExp("^https?://bazelbuild.github.io/skydoc/");
+      if (bad_url.test(current_url)) {
+        window.location.replace(current_url.replace(bad_url, "https://skydoc.bazel.build/"));
+      }
+    </script-->
+
+    <link rel="canonical" href="https://github.com/bazelbuild/rules_docker/examples.html">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="css/docs.css">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico">
+
+    <!-- metadata -->
+    <meta name="og:title" content="rules_docker"/>
+    <meta name="og:description" content="Rules for building and handling Docker images with Bazel"/>
+  </head>
+
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+      mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Examples</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://github.com/bazelbuild/rules_docker">GitHub</a>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+          for="cse-search-box">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text"
+            id="cse-search-box">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+      <a href="index.html">Bazel Docker</a>
+    </span>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <span class="drawer-nav-title">Documentation</span>
+          <ul>
+            <li><a href="install.html">Installing</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="Built-ins.html">Built-in rules</a></li>
+            <li><a href="repositories.html">Generated repositories</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">CSS Preprocessors</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_sass/blob/master/README.md">Sass <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">JavaScript Preprocessors</span>
+          <ul>
+            <li><a href="TypeScript.html">TypeScript</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Bundlers</span>
+          <ul>
+            <li><a href="Rollup.html">Rollup</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Optimizers</span>
+          <ul>
+            <li><a href="Terser.html">Terser</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Frameworks</span>
+          <ul>
+            <li><a href="examples.html#angular">Angular</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Testing</span>
+          <ul>
+            <li><a href="Cypress.html">Cypress</a></li>
+            <li><a href="Karma.html">Karma</a></li>
+            <li><a href="Protractor.html">Protractor</a></li>
+            <li><a href="Jasmine.html">Jasmine</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Deployment</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker#nodejs_image">Docker <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Get Involved</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker/blob/master/CONTRIBUTING.md">Contribute to rules_docker</a></li>
+            <li><a href="https://slack.bazel.build/">Join #javascript on Bazel Slack</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker/issues">Issue tracker</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          
+          <h1 class="page-title">Examples</h1>
+          
+
+          <p>TODO</p>
+
+<h1 id="frameworks">Frameworks</h1>
+
+<h2 id="angular">Angular</h2>
+
+<p>Bazel can run any toolchain you want, so there is more than one way to use it with Angular.
+See Alex’s post <a href="https://dev.to/bazel/angular-bazel-leaving-angular-labs-51ja">Angular ❤️ Bazel update</a> for a longer explanation.</p>
+
+<p><strong>Architect</strong>: The first approach is the simplest: use Architect (aka. Angular CLI Builders). This is the build tool inside of Angular CLI, so your existing application will continue to work the same way, and you can still get support from the Angular team. This may be a good choice if your goal is just to include an Angular app in a full-stack Bazel build that includes your backend, and making the Angular build&amp;test faster is not important for you.</p>
+
+<p>However, it has the worst performance because the level of incrementality is only as fine as how many libs your application is composed from.
+Bazel can only make a build more parallel and incremental if you express a wider dependency graph to it.</p>
+
+<p>Example: <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/angular_bazel_architect">examples/angular_bazel_architect</a></p>
+
+<p><strong>Google</strong>: This toolchain is what we originally advertised as “Angular Buildtools Convergence” (ABC). It is based on Google’s internal toolchain for building Angular, and has good performance characteristics. However it is harder to migrate to, because it doesn’t have good compatibility for existing applications.</p>
+
+<p>The example has its own guide: <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/angular">examples/angular</a></p>
+
+<p><strong>View Engine</strong>: If you’re stuck on the older Angular compiler/runtime before Ivy, called View Engine, then your options are more limited. We don’t support Angular 9 + View Engine + Bazel.</p>
+
+<p>Example: <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/angular_view_engine">examples/angular_view_engine</a></p>
+
+<p><strong>Custom</strong>: Bazel is excellent for advanced use cases where you need to customize your toolchain.
+Take any off-the-shelf tools, follow their README’s to call their CLI, and assemble them together in a custom way.
+This lets you take advantage of the latest JS ecosystem innovations without waiting for tooling vendors to
+assemble it all together for you.</p>
+
+<h2 id="react">React</h2>
+
+<p>Similar to the explanation above for Angular, Bazel is agnostic to what tools you choose to run on your project.
+However, the benefits of using Bazel are unlocked as you adopt it as your build system.
+We think the following examples show a typical migration of adopting Bazel:</p>
+
+<p><strong>create-react-app</strong>: If you run <code class="language-plaintext highlighter-rouge">create-react-app</code>, it will install a build system called <code class="language-plaintext highlighter-rouge">react-scripts</code>.
+As a first step into Bazel, you can simply ask Bazel to wrap the existing build system.
+This guarantees compatibility with your current code, and if your objective is just to include a frontend app into
+a bigger full-stack Bazel build, this might be the final step in the migration.
+However it will run <code class="language-plaintext highlighter-rouge">react-scripts</code> as a single Bazel action, which means that you gain no incrementality benefit.
+So we expect for most applications this is just a first step.</p>
+
+<p>The <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/create-react-app">create-react-app example</a>
+shows how this will look. We suggest reading the README in that example, and also look at the commit history to that
+directory as an illustration of how we started from create-react-app and added Bazel bits.</p>
+
+<p><strong>react-scripts-like</strong>: As a next step to make our Build more incremental and performant, we can replace the <code class="language-plaintext highlighter-rouge">react-scripts</code> build system with Bazel, but preserve compatibility as much as possible by having Bazel run
+mostly the same tools with mostly identical configuration. We continue to transpile TS to JS using Babel, for example,
+but we do it in a build step before invoking Webpack, just using the Babel CLI.</p>
+
+<p>This is a good middle ground to get some benefits from Bazel while staying on the same supported tools as react-scripts.</p>
+
+<p>TODO(alexeagle): build an example illustrating how this looks</p>
+
+<p><strong>custom</strong>: If you really know your JS build tools, Bazel is the perfect way to assemble all the myriad individual tools
+into a custom toolchain. This allows you to unlock any part of the JS ecosystem without waiting for it to be integrated
+for you by maintainers of a project like create-react-app, who have a very high bar for adding features since the
+maintenance and support burden falls on them. However you’ll need to understand both the tools as well as Bazel to
+successfully build your own toolchain.</p>
+
+<p>There is a basic example at <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/react_webpack">examples/react_webpack</a> but it needs a lot more work to show everything that is possible!</p>
+
+<h2 id="vue">Vue</h2>
+
+<p>We don’t have a dedicated example yet, but Vue has been known to work. Follow https://github.com/bazelbuild/rules_docker/issues/1840 for an example.</p>
+
+<h2 id="svelte">Svelte</h2>
+
+<p>None yet, please file an issue if you need this.</p>
+
+<h1 id="test-runners">Test Runners</h1>
+
+<h2 id="jest">Jest</h2>
+
+<p>There is a dedicated example for Jest: <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/jest">examples/jest</a></p>
+
+<h2 id="cypress">Cypress</h2>
+
+<p>We have done some early work to run Cypress under Bazel. Follow https://github.com/bazelbuild/rules_docker/issues/1904 for an example.</p>
+
+<h2 id="mocha">Mocha</h2>
+
+<p>Example at <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/webapp">examples/webapp</a> has a simple <code class="language-plaintext highlighter-rouge">mocha_test</code></p>
+
+<h2 id="karma-and-protractor">Karma and Protractor</h2>
+
+<p>See Protractor usage in <a href="https://github.com/bazelbuild/rules_docker/blob/master/examples/app/">examples/app</a></p>
+
+<h1 id="bundlers">Bundlers</h1>
+
+<h2 id="webpack">Webpack</h2>
+
+<p>See <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/react_webpack">examples/react_webpack</a></p>
+
+<h2 id="rollup">Rollup</h2>
+
+<p>The example at <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/webapp">examples/webapp</a> uses Rollup, and produces an app with ES5 and ES2015 variants (“differential loading”) that gives faster loading in modern browsers without dropping support for legacy ones.</p>
+
+<h2 id="parcel">Parcel</h2>
+
+<p>The example in <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/parcel">examples/parcel</a> shows how to write a custom rule, it happens to use the parcel binary to build. It’s a very minimal example but might be enough to get you started.</p>
+
+<h1 id="language-tooling">Language tooling</h1>
+
+<h2 id="less-sass-stylus">LESS, Sass, Stylus</h2>
+
+<p>See styles directory inside the <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/app/styles">examples/app</a> example.</p>
+
+<h2 id="typescript">TypeScript</h2>
+
+<p>Most of the examples show TypeScript usage. Also look in <a href="https://github.com/bazelbuild/rules_docker/tree/stable/packages/typescript/test">packages/typescript/test</a> for lots of handling of edge cases.</p>
+
+<h2 id="kotlin">Kotlin</h2>
+
+<p>The Kotlin language can compile to JS. The result has a very large stdlib JS payload, so we don’t recommend this for most uses.</p>
+
+<p>Example at <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/kotlin">examples/kotlin</a></p>
+
+<h2 id="google-closure-compiler">Google Closure Compiler</h2>
+
+<p><a href="https://github.com/bazelbuild/rules_closure">rules_closure</a> is a whole-cloth approach to using Bazel if you’re fully bought-into the Closure ecosystem.</p>
+
+<p><a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/closure">examples/closure</a> shows a very simple way to call the closure compiler without jumping into that ecosystem.</p>
+
+<h2 id="protocol-buffers-and-grpc">Protocol Buffers and gRPC</h2>
+
+<p>Note: this is considered a “labs” feature in rules_docker, so support and stability are not great. gRPC is still a WIP.</p>
+
+<p>See <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/protocol_buffers">examples/protocol_buffers</a></p>
+
+<h1 id="bazel-specific">Bazel-specific</h1>
+
+<h2 id="bazel-persistent-workers">Bazel Persistent Workers</h2>
+
+<p>If you want to speed up Bazel by keeping some tools running warm in the background as daemons, there’s a good readme in the <a href="https://github.com/bazelbuild/rules_docker/tree/stable/examples/worker">examples/worker</a></p>
+
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">&copy; 2019 Google, Inc.</div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="#"
+        id="scroll-to-top">
+        Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    var shiftWindow = function() {
+      if (location.hash.length !== 0) {
+        window.scrollBy(0, -50);
+      }
+    };
+    window.addEventListener("hashchange", shiftWindow);
+
+    var highlightCurrentSidebarNav = function() {
+      var href = location.pathname;
+      var item = $('.drawer-nav [href$="' + href + '"]');
+      if (item) {
+        var li = item.parent();
+        li.addClass("active");
+      }
+    };
+
+    /**
+     * Creates a CSE search form and submits the search query.
+     *
+     * Since the Material Design Lite header expandable text field does not
+     * support having a <form> element around the <input> element, we need to
+     * capture the ENTER keypress and then submit the form using this handler.
+     */
+    var submitSearch = function(query) {
+      var form = document.createElement("form");
+      form.setAttribute("action", "search.html");
+
+      var cseParams = {
+        "cx": "008327220137350982602:0mpaowwcmvg",
+        "cof": "FORID:10",
+        "ie": "UTF-8",
+      };
+      for (key in cseParams) {
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", key);
+        hidden.setAttribute("value", cseParams[key]);
+        form.appendChild(hidden);
+      }
+
+      var text = document.createElement("input");
+      text.setAttribute("type", "text");
+      text.setAttribute("name", "q");
+      text.setAttribute("value", query);
+      form.appendChild(text);
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    function setAnchors() {
+      const headerSelectors = ['h1', 'h2', 'h3'];
+
+      headerSelectors.forEach(selector => {
+        const headers = document.querySelectorAll(selector)
+        headers.forEach(header => {
+          anchor = document.createElement('a');
+          // headers id's are already set by jykell
+          const id = header.getAttribute('id');
+          if(id) {
+            anchor.href = '#' + id;
+            anchor.innerText = '# '
+            header.prepend(anchor);
+          }
+        });
+
+      })
+      
+    }
+
+    $(document).ready(function() {
+      // Scroll to anchor of location hash, adjusted for fixed navbar.
+      window.setTimeout(function() {
+        shiftWindow();
+      }, 1);
+
+      // Highlight the current item on the sidebar.
+      highlightCurrentSidebarNav();
+
+      // setup anchors
+      setAnchors();
+
+      // Handler to capture the ENTER keypress for the CSE search input
+      // in the page header and then call submitSearch() to submit the search
+      // query.
+      $("#cse-search-box").keyup(function(e) {
+        if (e.keyCode == 13) {
+          let query = $("#cse-search-box").val();
+          submitSearch(query);
+        }
+      });
+
+      // Handler for the Scroll to Top link in the page footer to scroll the
+      // main content back to the top.
+      $("#scroll-to-top").click(function() {
+        $(".mdl-layout__content").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+    });
+  </script>
+
+  <!-- Google Analytics tracking code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61082125-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+      </main>
+    </div>
+  </body>
+</html>

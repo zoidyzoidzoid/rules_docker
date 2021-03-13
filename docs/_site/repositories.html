@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generated Repositories - rules_docker</title>
+
+    <!-- When we have javascript.bazel.build, we may want this:
+    script>
+      var current_url = window.location.href;
+      var bad_url = new RegExp("^https?://bazelbuild.github.io/skydoc/");
+      if (bad_url.test(current_url)) {
+        window.location.replace(current_url.replace(bad_url, "https://skydoc.bazel.build/"));
+      }
+    </script-->
+
+    <link rel="canonical" href="https://github.com/bazelbuild/rules_docker/repositories.html">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="css/docs.css">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico">
+
+    <!-- metadata -->
+    <meta name="og:title" content="rules_docker"/>
+    <meta name="og:description" content="Rules for building and handling Docker images with Bazel"/>
+  </head>
+
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+      mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Generated Repositories</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://github.com/bazelbuild/rules_docker">GitHub</a>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+          for="cse-search-box">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text"
+            id="cse-search-box">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+      <a href="index.html">Bazel Docker</a>
+    </span>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <span class="drawer-nav-title">Documentation</span>
+          <ul>
+            <li><a href="install.html">Installing</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="Built-ins.html">Built-in rules</a></li>
+            <li><a href="repositories.html">Generated repositories</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">CSS Preprocessors</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_sass/blob/master/README.md">Sass <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">JavaScript Preprocessors</span>
+          <ul>
+            <li><a href="TypeScript.html">TypeScript</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Bundlers</span>
+          <ul>
+            <li><a href="Rollup.html">Rollup</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Optimizers</span>
+          <ul>
+            <li><a href="Terser.html">Terser</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Frameworks</span>
+          <ul>
+            <li><a href="examples.html#angular">Angular</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Testing</span>
+          <ul>
+            <li><a href="Cypress.html">Cypress</a></li>
+            <li><a href="Karma.html">Karma</a></li>
+            <li><a href="Protractor.html">Protractor</a></li>
+            <li><a href="Jasmine.html">Jasmine</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Deployment</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker#nodejs_image">Docker <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Get Involved</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker/blob/master/CONTRIBUTING.md">Contribute to rules_docker</a></li>
+            <li><a href="https://slack.bazel.build/">Join #javascript on Bazel Slack</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker/issues">Issue tracker</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          
+          <h1 class="page-title">Generated Repositories</h1>
+          
+
+          <p>TODO</p>
+
+<p>rules_docker produces several repositories for you to reference.
+Bazel represents your workspace as one repository, and code fetched or installed from outside your workspace lives in other repositories.
+These are referenced with the <code class="language-plaintext highlighter-rouge">@repo//</code> syntax in your BUILD files.</p>
+
+<h2 id="nodejs">@nodejs</h2>
+
+<p>This repository is created by calling the <code class="language-plaintext highlighter-rouge">node_repositories</code> function in your <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file.
+It contains the node, npm, and yarn programs.</p>
+
+<p>As always, <code class="language-plaintext highlighter-rouge">bazel query</code> is useful for learning about what targets are available.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel query @nodejs//...
+@nodejs//:node
+...
+</code></pre></div></div>
+
+<p>You don’t typically need to reference the <code class="language-plaintext highlighter-rouge">@nodejs</code> repository from your BUILD files because it’s used behind the scenes
+to run node and fetch dependencies.</p>
+
+<p>Some ways you can use this:</p>
+
+<ul>
+  <li>Run the Bazel-managed version of node: <code class="language-plaintext highlighter-rouge">bazel run @nodejs//:node path/to/program.js</code></li>
+  <li>Run the Bazel-managed version of npm: <code class="language-plaintext highlighter-rouge">bazel run @nodejs//:npm</code></li>
+  <li>Run the Bazel-managed version of yarn: <code class="language-plaintext highlighter-rouge">bazel run @nodejs//:yarn</code></li>
+  <li>Install dependencies from nested package.json file(s) which were passed to <code class="language-plaintext highlighter-rouge">node_repositories#package.json</code>
+    <ul>
+      <li>using npm: <code class="language-plaintext highlighter-rouge">bazel run @nodejs//:npm_node_repositories install</code></li>
+      <li>using yarn: <code class="language-plaintext highlighter-rouge">bazel run @nodejs//:yarn_node_repositories</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="npm">@npm</h2>
+
+<p>This repository is created by calling the <code class="language-plaintext highlighter-rouge">npm_install</code> or <code class="language-plaintext highlighter-rouge">yarn_install</code> function in your <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file.</p>
+
+<p>The name <code class="language-plaintext highlighter-rouge">@npm</code> is recommended in the simple case that you install only a single <code class="language-plaintext highlighter-rouge">package.json</code> file.
+If you have multiple, call the <code class="language-plaintext highlighter-rouge">npm_install</code> or <code class="language-plaintext highlighter-rouge">yarn_install</code> multiple times, and give each one a unique name.
+This results in multiple repositories, named whatever you chose, rather than “npm”.
+The following applies to any repository created by <code class="language-plaintext highlighter-rouge">npm_install</code> , or <code class="language-plaintext highlighter-rouge">yarn_install</code>, just replace <code class="language-plaintext highlighter-rouge">@npm</code> with the name you chose.</p>
+
+<p>Again, use <code class="language-plaintext highlighter-rouge">bazel query @npm//...</code> to learn about all the targets declared in this repository.</p>
+
+<p>Our philosophy is to mirror the installed npm dependencies in a way that’s idiomatic to reference them in Bazel.</p>
+
+<p>Commonly used ones are:</p>
+
+<ul>
+  <li>Every file that was installed from npm: <code class="language-plaintext highlighter-rouge">@npm//:node_modules</code>. This target can have a very large number of files and slow down your build, however it’s a simple way to skip having to declare more fine-grained inputs to your BUILD targets.</li>
+  <li>If you had a dependency on the <code class="language-plaintext highlighter-rouge">foo</code> package, you can reference <code class="language-plaintext highlighter-rouge">@npm//foo</code> to get all the files. We mirror the npm dependency graph, so if <code class="language-plaintext highlighter-rouge">foo</code> declares a dependency on another package <code class="language-plaintext highlighter-rouge">dep</code>, Bazel will include that dependency when <code class="language-plaintext highlighter-rouge">foo</code> is used.</li>
+  <li>If the <code class="language-plaintext highlighter-rouge">foo</code> package has an executable program <code class="language-plaintext highlighter-rouge">bar</code>, then <code class="language-plaintext highlighter-rouge">@npm//foo/bin:bar</code> is a <code class="language-plaintext highlighter-rouge">nodejs_binary</code> that you can call with <code class="language-plaintext highlighter-rouge">bazel run</code> or can pass as the <code class="language-plaintext highlighter-rouge">executable</code> to your own rules.</li>
+  <li>Sometimes you need a UMD bundle, but a package doesn’t ship one. For example, the <code class="language-plaintext highlighter-rouge">ts_devserver</code> rule depends on third-party libraries having a named UMD entry point. The <code class="language-plaintext highlighter-rouge">@npm//foo:foo__umd</code> target will automatically run Browserify to convert the package’s <code class="language-plaintext highlighter-rouge">main</code> entry into UMD.</li>
+  <li>DEPRECATED: A helper to install npm packages into their own Bazel repository: <code class="language-plaintext highlighter-rouge">@npm//:install_bazel_dependencies.bzl</code> provides a <code class="language-plaintext highlighter-rouge">install_bazel_dependencies</code> function. Some npm packages ship custom bazel rules, for example, the <code class="language-plaintext highlighter-rouge">@angular/bazel</code> package provides rules which you should load from <code class="language-plaintext highlighter-rouge">@npm_angular_bazel//:index.bzl</code>. However this causes the build to always fetch npm packages even when not needed, so we plan to remove this in a future release.</li>
+</ul>
+
+<blockquote>
+  <p>One convenient (maybe also confusing) way to understand what BUILD files are generated is to look at our integration test at https://github.com/bazelbuild/rules_docker/tree/stable/internal/npm_install/test/golden - this directory looks similar to the content of an <code class="language-plaintext highlighter-rouge">@npm</code> repository.</p>
+</blockquote>
+
+<h3 id="generated-macros-for-npm-packages-with-bin-entries">Generated macros for npm packages with <code class="language-plaintext highlighter-rouge">bin</code> entries</h3>
+
+<p>Any installed package that has one or more <code class="language-plaintext highlighter-rouge">bin</code> entries in the package.json get convenient macros generated.
+These are the Bazel equivalent of the <code class="language-plaintext highlighter-rouge">./node_modules/.bin/*</code> files in your project which the package manager created.</p>
+
+<p>For a package <code class="language-plaintext highlighter-rouge">foo</code> with some bin entries, we will create a <code class="language-plaintext highlighter-rouge">.bzl</code> file where you can load rules, at <code class="language-plaintext highlighter-rouge">@npm//foo:index.bzl</code></p>
+
+<p>If the foo package contains a bin entry <code class="language-plaintext highlighter-rouge">bar</code>, the <code class="language-plaintext highlighter-rouge">index.bzl</code> file will contain <code class="language-plaintext highlighter-rouge">bar</code> and <code class="language-plaintext highlighter-rouge">bar_test</code> macros. You can load these two generated rules in your BUILD file:</p>
+
+<p><code class="language-plaintext highlighter-rouge">load("@npm//foo:index.bzl", "bar", "bar_test")</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">bar</code> macro can be called in two ways. If you pass <code class="language-plaintext highlighter-rouge">outs</code> or <code class="language-plaintext highlighter-rouge">output_dir</code>, it produces an <code class="language-plaintext highlighter-rouge">npm_package_bin</code> rule that invokes the tool to transform some inputs to outputs, useful as a dependency of another rule, or with <code class="language-plaintext highlighter-rouge">bazel build</code>. If you don’t pass <code class="language-plaintext highlighter-rouge">outs</code> or <code class="language-plaintext highlighter-rouge">output_dir</code>, then it will produce a <code class="language-plaintext highlighter-rouge">nodejs_binary</code> rule intended for use with <code class="language-plaintext highlighter-rouge">bazel run</code>. (The latter is identical to the <code class="language-plaintext highlighter-rouge">@npm//foo/bin:bar</code> target, just giving you a convenient way to alias it with a different label and pass it arguments).</p>
+
+<p>See examples in rules_docker. A typical tool to use with <code class="language-plaintext highlighter-rouge">outs</code> is Babel, while a typical rule with no outputs is <code class="language-plaintext highlighter-rouge">http_server</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">bar_test</code> macro produces a <code class="language-plaintext highlighter-rouge">nodejs_test</code> that assumes the tool is a test runner, and produces a zero or one exit code, useful as a target with <code class="language-plaintext highlighter-rouge">bazel test</code>. See the examples of <code class="language-plaintext highlighter-rouge">mocha_test</code> in rules_docker.</p>
+
+<p>You can also read https://dev.to/bazel/layering-in-bazel-for-web-389h to see an end-to-end example of using the generated <code class="language-plaintext highlighter-rouge">bin</code> macros.</p>
+
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">&copy; 2019 Google, Inc.</div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="#"
+        id="scroll-to-top">
+        Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    var shiftWindow = function() {
+      if (location.hash.length !== 0) {
+        window.scrollBy(0, -50);
+      }
+    };
+    window.addEventListener("hashchange", shiftWindow);
+
+    var highlightCurrentSidebarNav = function() {
+      var href = location.pathname;
+      var item = $('.drawer-nav [href$="' + href + '"]');
+      if (item) {
+        var li = item.parent();
+        li.addClass("active");
+      }
+    };
+
+    /**
+     * Creates a CSE search form and submits the search query.
+     *
+     * Since the Material Design Lite header expandable text field does not
+     * support having a <form> element around the <input> element, we need to
+     * capture the ENTER keypress and then submit the form using this handler.
+     */
+    var submitSearch = function(query) {
+      var form = document.createElement("form");
+      form.setAttribute("action", "search.html");
+
+      var cseParams = {
+        "cx": "008327220137350982602:0mpaowwcmvg",
+        "cof": "FORID:10",
+        "ie": "UTF-8",
+      };
+      for (key in cseParams) {
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", key);
+        hidden.setAttribute("value", cseParams[key]);
+        form.appendChild(hidden);
+      }
+
+      var text = document.createElement("input");
+      text.setAttribute("type", "text");
+      text.setAttribute("name", "q");
+      text.setAttribute("value", query);
+      form.appendChild(text);
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    function setAnchors() {
+      const headerSelectors = ['h1', 'h2', 'h3'];
+
+      headerSelectors.forEach(selector => {
+        const headers = document.querySelectorAll(selector)
+        headers.forEach(header => {
+          anchor = document.createElement('a');
+          // headers id's are already set by jykell
+          const id = header.getAttribute('id');
+          if(id) {
+            anchor.href = '#' + id;
+            anchor.innerText = '# '
+            header.prepend(anchor);
+          }
+        });
+
+      })
+      
+    }
+
+    $(document).ready(function() {
+      // Scroll to anchor of location hash, adjusted for fixed navbar.
+      window.setTimeout(function() {
+        shiftWindow();
+      }, 1);
+
+      // Highlight the current item on the sidebar.
+      highlightCurrentSidebarNav();
+
+      // setup anchors
+      setAnchors();
+
+      // Handler to capture the ENTER keypress for the CSE search input
+      // in the page header and then call submitSearch() to submit the search
+      // query.
+      $("#cse-search-box").keyup(function(e) {
+        if (e.keyCode == 13) {
+          let query = $("#cse-search-box").val();
+          submitSearch(query);
+        }
+      });
+
+      // Handler for the Scroll to Top link in the page footer to scroll the
+      // main content back to the top.
+      $("#scroll-to-top").click(function() {
+        $(".mdl-layout__content").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+    });
+  </script>
+
+  <!-- Google Analytics tracking code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61082125-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+      </main>
+    </div>
+  </body>
+</html>

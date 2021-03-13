@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Installation - rules_docker</title>
+
+    <!-- When we have javascript.bazel.build, we may want this:
+    script>
+      var current_url = window.location.href;
+      var bad_url = new RegExp("^https?://bazelbuild.github.io/skydoc/");
+      if (bad_url.test(current_url)) {
+        window.location.replace(current_url.replace(bad_url, "https://skydoc.bazel.build/"));
+      }
+    </script-->
+
+    <link rel="canonical" href="https://github.com/bazelbuild/rules_docker/install.html">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="css/docs.css">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico">
+
+    <!-- metadata -->
+    <meta name="og:title" content="rules_docker"/>
+    <meta name="og:description" content="Rules for building and handling Docker images with Bazel"/>
+  </head>
+
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+      mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Installation</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://github.com/bazelbuild/rules_docker">GitHub</a>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+          for="cse-search-box">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text"
+            id="cse-search-box">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+      <a href="index.html">Bazel Docker</a>
+    </span>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <span class="drawer-nav-title">Documentation</span>
+          <ul>
+            <li><a href="install.html">Installing</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="Built-ins.html">Built-in rules</a></li>
+            <li><a href="repositories.html">Generated repositories</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">CSS Preprocessors</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_sass/blob/master/README.md">Sass <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">JavaScript Preprocessors</span>
+          <ul>
+            <li><a href="TypeScript.html">TypeScript</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Bundlers</span>
+          <ul>
+            <li><a href="Rollup.html">Rollup</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Optimizers</span>
+          <ul>
+            <li><a href="Terser.html">Terser</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Frameworks</span>
+          <ul>
+            <li><a href="examples.html#angular">Angular</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Testing</span>
+          <ul>
+            <li><a href="Cypress.html">Cypress</a></li>
+            <li><a href="Karma.html">Karma</a></li>
+            <li><a href="Protractor.html">Protractor</a></li>
+            <li><a href="Jasmine.html">Jasmine</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Deployment</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker#nodejs_image">Docker <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Get Involved</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker/blob/master/CONTRIBUTING.md">Contribute to rules_docker</a></li>
+            <li><a href="https://slack.bazel.build/">Join #javascript on Bazel Slack</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker/issues">Issue tracker</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          
+          <h1 class="page-title">Installation</h1>
+          
+
+          <p>TODO</p>
+
+<h2 id="custom-installation">Custom installation</h2>
+
+<p>First, you need Bazel.
+We recommend using Bazelisk, which is a version-selection wrapper, similar to
+the <code class="language-plaintext highlighter-rouge">nvm</code> tool managing your version of Node. This is available on npm.
+We also recommend installing <code class="language-plaintext highlighter-rouge">ibazel</code> which is the “watch mode” for Bazel.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn add <span class="nt">-D</span> @bazel/bazelisk @bazel/ibazel
+<span class="c"># or</span>
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save-dev</span> @bazel/bazelisk @bazel/ibazel
+</code></pre></div></div>
+
+<blockquote>
+  <p>You could install a current bazel distribution, following the <a href="https://docs.bazel.build/versions/master/install.html">bazel instructions</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>If you use Bazelisk, see <a href="https://github.com/bazelbuild/bazelisk/issues/29#issuecomment-478062147">this workaround</a> to get working command-line completion.</p>
+</blockquote>
+
+<blockquote>
+  <p>It’s reasonable to globally-install bazelisk so you get a <code class="language-plaintext highlighter-rouge">bazel</code> command in your $PATH.
+We don’t recommend this with ibazel as the version is frequently changing.</p>
+</blockquote>
+
+<p>Next, create a <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file in your project root (or edit the existing one)
+containing:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@bazel_tools//tools/build_defs/repo:http.bzl"</span><span class="p">,</span> <span class="s">"http_archive"</span><span class="p">)</span>
+<span class="n">http_archive</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"build_bazel_rules_docker"</span><span class="p">,</span>
+    <span class="n">sha256</span> <span class="o">=</span> <span class="s">"0f2de53628e848c1691e5729b515022f5a77369c76a09fbe55611e12731c90e3"</span><span class="p">,</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">"https://github.com/bazelbuild/rules_docker/releases/download/2.0.1/rules_docker-2.0.1.tar.gz"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"node_repositories"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now you can choose from a few options to finish installation.</p>
+
+<p>To choose a version of Node.js:</p>
+
+<ol>
+  <li>(Simplest) use the version of Node.js that comes with these rules by default</li>
+  <li>Choose from one of the versions we support natively</li>
+  <li>Tell Bazel where to download a specific version you require</li>
+  <li>Check Node.js into your repository and don’t download anything</li>
+</ol>
+
+<p>These are described in more detail in the following sections.</p>
+
+<h3 id="simple-usage">Simple usage</h3>
+
+<p>Add this to your <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file. It only tells Bazel how to find your
+<code class="language-plaintext highlighter-rouge">package.json</code> file. It will use default versions of Node.js and npm.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># NOTE: this rule installs nodejs, npm, and yarn, but does NOT install
+# your npm dependencies into your node_modules folder.
+# You must still run the package manager to do this.
+</span><span class="n">node_repositories</span><span class="p">(</span><span class="n">package_json</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//:package.json"</span><span class="p">])</span>
+</code></pre></div></div>
+<h3 id="installation-with-a-specific-supported-version-of-nodejs-and-yarn">Installation with a specific supported version of Node.js and Yarn</h3>
+
+<p>You can choose a specific version of Node.js that’s built into these rules.
+You can also choose a specific version of Yarn.
+Note that some of our packages have started to use features from Node 12, so you may see warnings if you use an older version.</p>
+
+<blockquote>
+  <p>Now that Node 12 is LTS (Long-term support) we encourage you to upgrade, and don’t intend to fix bugs which are only observed in Node 10 or lower.</p>
+</blockquote>
+
+<p>The available versions are documented on the <code class="language-plaintext highlighter-rouge">node_repositories</code> rule in the <a href="Built-ins.md">Built-ins</a>.</p>
+
+<p>Add to <code class="language-plaintext highlighter-rouge">WORKSPACE</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># NOTE: this rule installs nodejs, npm, and yarn, but does NOT install
+# your npm dependencies into your node_modules folder.
+# You must still run the package manager to do this.
+</span><span class="n">node_repositories</span><span class="p">(</span>
+    <span class="n">package_json</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//:package.json"</span><span class="p">],</span>
+    <span class="n">node_version</span> <span class="o">=</span> <span class="s">"8.11.1"</span><span class="p">,</span>
+    <span class="n">yarn_version</span> <span class="o">=</span> <span class="s">"1.5.1"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="installation-with-a-manually-specified-version-of-nodejs-and-yarn">Installation with a manually specified version of NodeJS and Yarn</h3>
+
+<p>If you’d like to use a version of NodeJS and/or Yarn that are not currently supported here, you can manually
+specify those in your <code class="language-plaintext highlighter-rouge">WORKSPACE</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"node_repositories"</span><span class="p">)</span>
+
+<span class="c1"># NOTE: this rule does NOT install your npm dependencies into your node_modules folder.
+# You must still run the package manager to do this.
+</span><span class="n">node_repositories</span><span class="p">(</span>
+  <span class="n">node_version</span> <span class="o">=</span> <span class="s">"8.10.0"</span><span class="p">,</span>
+  <span class="n">yarn_version</span> <span class="o">=</span> <span class="s">"1.5.1"</span><span class="p">,</span>
+  <span class="n">node_repositories</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"8.10.0-darwin_amd64"</span><span class="p">:</span> <span class="p">(</span><span class="s">"node-v8.10.0-darwin-x64.tar.gz"</span><span class="p">,</span> <span class="s">"node-v8.10.0-darwin-x64"</span><span class="p">,</span> <span class="s">"7d77bd35bc781f02ba7383779da30bd529f21849b86f14d87e097497671b0271"</span><span class="p">),</span>
+    <span class="s">"8.10.0-linux_amd64"</span><span class="p">:</span> <span class="p">(</span><span class="s">"node-v8.10.0-linux-x64.tar.xz"</span><span class="p">,</span> <span class="s">"node-v8.10.0-linux-x64"</span><span class="p">,</span> <span class="s">"92220638d661a43bd0fee2bf478cb283ead6524f231aabccf14c549ebc2bc338"</span><span class="p">),</span>
+    <span class="s">"8.10.0-windows_amd64"</span><span class="p">:</span> <span class="p">(</span><span class="s">"node-v8.10.0-win-x64.zip"</span><span class="p">,</span> <span class="s">"node-v8.10.0-win-x64"</span><span class="p">,</span> <span class="s">"936ada36cb6f09a5565571e15eb8006e45c5a513529c19e21d070acf0e50321b"</span><span class="p">),</span>
+  <span class="p">},</span>
+  <span class="n">yarn_repositories</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"1.5.1"</span><span class="p">:</span> <span class="p">(</span><span class="s">"yarn-v1.5.1.tar.gz"</span><span class="p">,</span> <span class="s">"yarn-v1.5.1"</span><span class="p">,</span> <span class="s">"cd31657232cf48d57fdbff55f38bfa058d2fb4950450bd34af72dac796af4de1"</span><span class="p">),</span>
+  <span class="p">},</span>
+  <span class="n">node_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">"https://nodejs.org/dist/v{version}/{filename}"</span><span class="p">],</span>
+  <span class="n">yarn_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">"https://github.com/yarnpkg/yarn/releases/download/v{version}/{filename}"</span><span class="p">],</span>
+  <span class="n">package_json</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//:package.json"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Specifying <code class="language-plaintext highlighter-rouge">node_urls</code> and <code class="language-plaintext highlighter-rouge">yarn_urls</code> is optional. If omitted, the default values will be used. You may also use a custom NodeJS version and the default Yarn version or vice-versa.</p>
+
+<h3 id="installation-with-local-vendored-versions-of-nodejs-and-yarn">Installation with local vendored versions of NodeJS and Yarn</h3>
+
+<p>Finally, you could check Node.js and Yarn into your repository, and not fetch
+them from the internet. This is what we do internally at Google.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"node_repositories"</span><span class="p">)</span>
+
+<span class="c1"># Point node_repositories to use locally installed versions of Node.js and Yarn.
+# The vendored_node and vendored_yarn labels point to the extracted contents of
+# https://nodejs.org/dist/v10.12.0/node-v10.12.0-linux-x64.tar.xz and
+# https://github.com/yarnpkg/yarn/releases/download/v1.10.0/yarn-v1.10.0.tar.gz
+# respectively. NOTE: node-v10.12.0-linux-x64 will only work on Linux.
+</span><span class="n">node_repositories</span><span class="p">(</span>
+  <span class="n">vendored_node</span> <span class="o">=</span> <span class="s">"@wksp//:third_party/node-v10.12.0-linux-x64"</span><span class="p">,</span>
+  <span class="n">vendored_yarn</span> <span class="o">=</span> <span class="s">"@wksp//:third_party/yarn-v1.10.0"</span><span class="p">,</span>
+  <span class="n">package_json</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//:package.json"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>In this case, the locally installed Node.js and Yarn are located in the <code class="language-plaintext highlighter-rouge">wksp</code> workspace in
+the <code class="language-plaintext highlighter-rouge">third_party/node-v10.12.0-linux-x64</code> and <code class="language-plaintext highlighter-rouge">third_party/yarn-v1.10.0</code> folders. When using
+<code class="language-plaintext highlighter-rouge">vendored_node</code>, you will be restricted to a single platform. <code class="language-plaintext highlighter-rouge">vendored_yarn</code> on the other hand,
+is platform independent. See <code class="language-plaintext highlighter-rouge">/examples/vendored_node</code> in this repository for an example of this
+in use.</p>
+
+<p>NOTE: Vendored Node.js and Yarn are not compatible with Remote Bazel Execution.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Bazel works alongside your existing package manager, either npm or yarn.
+You manage your <code class="language-plaintext highlighter-rouge">package.json</code> file, editing by hand or by running commands like <code class="language-plaintext highlighter-rouge">npm install</code> or <code class="language-plaintext highlighter-rouge">yarn add</code>.
+The package manager will also write a lock file, indicating exact versions for all transitive dependencies, which keeps your build hermetic and reproducible.
+Bazel will run the package manager when the <code class="language-plaintext highlighter-rouge">package.json</code> or <code class="language-plaintext highlighter-rouge">*lock.json</code> files change, but you can also run the package manager yourself.</p>
+
+<h3 id="bazel-managed-vs-self-managed-dependencies">Bazel-managed vs self-managed dependencies</h3>
+
+<p>You have two options for managing your <code class="language-plaintext highlighter-rouge">node_modules</code> dependencies: Bazel-managed or self-managed.</p>
+
+<p>With the Bazel-managed dependencies approach, Bazel is responsible for making sure that <code class="language-plaintext highlighter-rouge">node_modules</code> is
+up to date with your <code class="language-plaintext highlighter-rouge">package[-lock].json</code> or <code class="language-plaintext highlighter-rouge">yarn.lock</code> files. This means Bazel will set it up when the
+repository is first cloned, and rebuild it whenever it changes. With the <code class="language-plaintext highlighter-rouge">yarn_install</code> or <code class="language-plaintext highlighter-rouge">npm_install</code>
+repository rules, Bazel will setup your <code class="language-plaintext highlighter-rouge">node_modules</code> for you in an external workspace named after the
+repository rule. For example, a <code class="language-plaintext highlighter-rouge">yarn_install(name = "npm", ...)</code> will setup an external
+workspace named <code class="language-plaintext highlighter-rouge">@npm</code> with the <code class="language-plaintext highlighter-rouge">node_modules</code> folder inside of it as well as generating targets for each
+root npm package in <code class="language-plaintext highlighter-rouge">node_modules</code> for use as dependencies to other rules.</p>
+
+<p>For Bazel to provide the strongest guarantees about reproducibility and the
+fidelity of your build, it is recommended that you use Bazel-managed dependencies.
+This approach also allows you to use the generated fine-grained npm package dependencies
+which can significantly reduce the number of inputs to actions, making Bazel sand-boxing and
+remote-execution faster if there are a large number of files under <code class="language-plaintext highlighter-rouge">node_modules</code>.</p>
+
+<blockquote>
+  <p>Note that as of Bazel 0.26, and with the recommended <code class="language-plaintext highlighter-rouge">managed_directories</code> attribute on the <code class="language-plaintext highlighter-rouge">workspace</code> rule in <code class="language-plaintext highlighter-rouge">/WORKSPACE</code>,
+the Bazel-managed <code class="language-plaintext highlighter-rouge">node_modules</code> directory is placed in your workspace root in the standard location used by npm or yarn.</p>
+</blockquote>
+
+<h3 id="using-bazel-managed-dependencies">Using Bazel-managed dependencies</h3>
+
+<p>To have Bazel manage its own copy of <code class="language-plaintext highlighter-rouge">node_modules</code>, which is useful to avoid
+juggling multiple toolchains, you can add one of the following to your <code class="language-plaintext highlighter-rouge">WORKSPACE</code>
+file:</p>
+
+<p>Using Yarn (preferred):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"yarn_install"</span><span class="p">)</span>
+
+<span class="n">yarn_install</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"npm"</span><span class="p">,</span>
+    <span class="n">package_json</span> <span class="o">=</span> <span class="s">"//:package.json"</span><span class="p">,</span>
+    <span class="n">yarn_lock</span> <span class="o">=</span> <span class="s">"//:yarn.lock"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Using NPM:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"npm_install"</span><span class="p">)</span>
+
+<span class="n">npm_install</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"npm"</span><span class="p">,</span>
+    <span class="n">package_json</span> <span class="o">=</span> <span class="s">"//:package.json"</span><span class="p">,</span>
+    <span class="n">package_lock_json</span> <span class="o">=</span> <span class="s">"//:package-lock.json"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you don’t need to pass any arguments to <code class="language-plaintext highlighter-rouge">node_repositories</code>,
+  you can skip calling that function. <code class="language-plaintext highlighter-rouge">yarn_install</code> and <code class="language-plaintext highlighter-rouge">npm_install</code> will do it by default.</p>
+</blockquote>
+
+<p>You should now add the <code class="language-plaintext highlighter-rouge">@npm</code> workspace to the <code class="language-plaintext highlighter-rouge">managed_directories</code> option in the <code class="language-plaintext highlighter-rouge">workspace</code> rule at the top of the file. This tells Bazel that the <code class="language-plaintext highlighter-rouge">node_modules</code> directory is special and is managed by the package manager.
+Add the <code class="language-plaintext highlighter-rouge">workspace</code> rule if it isn’t already in your <code class="language-plaintext highlighter-rouge">/WORKSPACE</code> file.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">workspace</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"my_wksp"</span><span class="p">,</span>
+    <span class="n">managed_directories</span> <span class="o">=</span> <span class="p">{</span><span class="s">"@npm"</span><span class="p">:</span> <span class="p">[</span><span class="s">"node_modules"</span><span class="p">]},</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>As of Bazel 0.26 this feature is still experimental, so also add this line to the <code class="language-plaintext highlighter-rouge">.bazelrc</code> to opt-in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>common --experimental_allow_incremental_repository_updates
+</code></pre></div></div>
+
+<h4 id="yarn_install-vs-npm_install">yarn_install vs. npm_install</h4>
+
+<p><code class="language-plaintext highlighter-rouge">yarn_install</code> is the preferred rule for setting up Bazel-managed dependencies for a number of reasons:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">yarn_install</code> will use the global yarn cache by default which will improve your build performance (this can be turned off with the <code class="language-plaintext highlighter-rouge">use_global_yarn_cache</code> attribute)</li>
+  <li>npm has a known peer dependency hoisting issue that can lead to missing peer dependencies in some cases (see https://github.com/bazelbuild/rules_docker/issues/416)</li>
+</ul>
+
+<h4 id="fine-grained-npm-package-dependencies">Fine-grained npm package dependencies</h4>
+
+<p>You can then reference individual npm packages in your <code class="language-plaintext highlighter-rouge">BUILD</code> rules via:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"nodejs_binary"</span><span class="p">)</span>
+
+<span class="n">nodejs_binary</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"bar"</span><span class="p">,</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="s">"@npm//foo"</span><span class="p">,</span>
+      <span class="s">"@npm//baz"</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="p">...</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>In this case, the <code class="language-plaintext highlighter-rouge">bar</code> nodejs_binary depends only the <code class="language-plaintext highlighter-rouge">foo</code> and <code class="language-plaintext highlighter-rouge">baz</code> npm packages
+and all of their transitive deps.</p>
+
+<p>For other rules such as <code class="language-plaintext highlighter-rouge">jasmine_node_test</code>, fine grained
+npm dependencies are specified in the <code class="language-plaintext highlighter-rouge">deps</code> attribute:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">jasmine_node_test</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"test"</span><span class="p">,</span>
+    <span class="p">...</span>
+    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">"@npm//jasmine"</span><span class="p">,</span>
+        <span class="s">"@npm//foo"</span><span class="p">,</span>
+        <span class="s">"@npm//baz"</span><span class="p">,</span>
+        <span class="p">...</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="multiple-sets-of-npm-dependencies">Multiple sets of npm dependencies</h4>
+
+<p>If your workspace has multiple applications, each with their own <code class="language-plaintext highlighter-rouge">package.json</code>
+and npm deps, <code class="language-plaintext highlighter-rouge">yarn_install</code> (or <code class="language-plaintext highlighter-rouge">npm_install</code>) can be called separately for
+each.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">workspace</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"my_wksp"</span><span class="p">,</span>
+    <span class="n">managed_directories</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"@app1_npm"</span><span class="p">:</span> <span class="p">[</span><span class="s">"app1/node_modules"</span><span class="p">],</span>
+        <span class="s">"@app2_npm"</span><span class="p">:</span> <span class="p">[</span><span class="s">"app2/node_modules"</span><span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">yarn_install</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"app1_npm"</span><span class="p">,</span>
+    <span class="n">package_json</span> <span class="o">=</span> <span class="s">"//app1:package.json"</span><span class="p">,</span>
+    <span class="n">yarn_lock</span> <span class="o">=</span> <span class="s">"//app1:yarn.lock"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">yarn_install</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"app2_npm"</span><span class="p">,</span>
+    <span class="n">package_json</span> <span class="o">=</span> <span class="s">"//app2:package.json"</span><span class="p">,</span>
+    <span class="n">yarn_lock</span> <span class="o">=</span> <span class="s">"//app2:yarn.lock"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Your application would then reference its deps as (for example) <code class="language-plaintext highlighter-rouge">@app1_npm//lodash</code>, or <code class="language-plaintext highlighter-rouge">@app2_npm//jquery</code>.</p>
+
+<h4 id="fine-grained-npm-package-nodejs_binary-targets">Fine-grained npm package nodejs_binary targets</h4>
+
+<p>If an npm package lists one or more <code class="language-plaintext highlighter-rouge">bin</code> entry points in its <code class="language-plaintext highlighter-rouge">package.json</code>,
+<code class="language-plaintext highlighter-rouge">nodejs_binary</code> targets will be generated for these.</p>
+
+<p>For example, the <code class="language-plaintext highlighter-rouge">protractor</code> package has two bin entries in its <code class="language-plaintext highlighter-rouge">package.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"bin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"protractor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/protractor"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"webdriver-manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/webdriver-manager"</span><span class="w">
+  </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>These will result in two generated <code class="language-plaintext highlighter-rouge">nodejs_binary</code> targets in the <code class="language-plaintext highlighter-rouge">@npm//protractor/bin</code>
+package (if your npm deps workspace is <code class="language-plaintext highlighter-rouge">@npm</code>):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@npm//protractor/bin:protractor</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@npm//protractor/bin:webdriver-manager</code></li>
+</ul>
+
+<p>These targets can be used as executables for actions in custom rules or can
+be run by Bazel directly. For example, you can run protractor with the
+following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @npm//protractor/bin:protractor
+</code></pre></div></div>
+
+<p>Note: These targets are in the <code class="language-plaintext highlighter-rouge">protractor/bin</code> package so they don’t
+conflict with the targets to use in deps[]. For example, <code class="language-plaintext highlighter-rouge">@npm//protractor:protractor</code>
+is target to use in deps[] while <code class="language-plaintext highlighter-rouge">@npm//protractor/bin:protractor</code> is the binary target.</p>
+
+<h4 id="coarse-node_modules-dependencies">Coarse node_modules dependencies</h4>
+
+<p>Using fine grained npm dependencies is recommended to minimize
+the number of inputs to your rules. However, for backward compatibility
+there are also filegroups defined by <code class="language-plaintext highlighter-rouge">yarn_install</code> and <code class="language-plaintext highlighter-rouge">npm_install</code>
+that include all packages under <code class="language-plaintext highlighter-rouge">node_modules</code> and which can be used
+with the <code class="language-plaintext highlighter-rouge">node_modules</code> attribute of nodejs rules.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@npm//:node_modules</code> includes all packages under <code class="language-plaintext highlighter-rouge">node_modules</code> as well as the <code class="language-plaintext highlighter-rouge">.bin</code> folder</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span><span class="p">(</span><span class="s">"@build_bazel_rules_docker//:index.bzl"</span><span class="p">,</span> <span class="s">"nodejs_binary"</span><span class="p">)</span>
+
+<span class="n">nodejs_binary</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"bar"</span><span class="p">,</span>
+    <span class="n">node_modules</span> <span class="o">=</span> <span class="s">"@npm//:node_modules"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="using-self-managed-dependencies">Using self-managed dependencies</h3>
+
+<p>If you’d like to have Bazel use the <code class="language-plaintext highlighter-rouge">node_modules</code> directory you are managing,
+then next you will create a <code class="language-plaintext highlighter-rouge">BUILD.bazel</code> file in your project root containing:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">package</span><span class="p">(</span><span class="n">default_visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s">"//visibility:public"</span><span class="p">])</span>
+
+<span class="n">filegroup</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"node_modules"</span><span class="p">,</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span>
+        <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s">"node_modules/**/*"</span><span class="p">],</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="c1"># Files under test &amp; docs may contain file names that
+</span>          <span class="c1"># are not legal Bazel labels (e.g.,
+</span>          <span class="c1"># node_modules/ecstatic/test/public/中文/檔案.html)
+</span>          <span class="s">"node_modules/test/**"</span><span class="p">,</span>
+          <span class="s">"node_modules/docs/**"</span><span class="p">,</span>
+          <span class="c1"># Files with spaces are not allowed in Bazel runfiles
+</span>          <span class="c1"># See https://github.com/bazelbuild/bazel/issues/4327
+</span>          <span class="s">"node_modules/**/* */**"</span><span class="p">,</span>
+          <span class="s">"node_modules/**/* *"</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>The example in <code class="language-plaintext highlighter-rouge">examples/user_managed_deps</code> uses self-managed dependencies.</p>
+
+<p>To use the Yarn package manager, which we recommend for its built-in
+verification command, you can run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @nodejs//:yarn_node_repositories
+</code></pre></div></div>
+
+<p>If you use npm instead, run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @nodejs//:npm_node_repositories <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">@nodejs//:yarn_node_repositories</code> and <code class="language-plaintext highlighter-rouge">@nodejs//:npm_node_repositories</code> targets will run yarn/npm on all of the
+package.json contexts listed <code class="language-plaintext highlighter-rouge">package_json</code> attribute of the <code class="language-plaintext highlighter-rouge">node_repositories</code>
+repository rule in your WORKSPACE file (<code class="language-plaintext highlighter-rouge">node_repositories(package_json = [...])</code>).</p>
+
+<p>If there are multiple package.json contexts in this rule but you would like to
+run the bazel managed yarn or npm on a single context this can be done
+using the following targets:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @nodejs//:yarn <span class="nt">--</span> &lt;arguments passed to yarn&gt;
+</code></pre></div></div>
+
+<p>If you use npm instead, run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @nodejs//:npm <span class="nt">--</span> &lt;arguments passed to npm&gt;
+</code></pre></div></div>
+
+<p>This will run yarn/npm in the current working directory. To add a package with the <code class="language-plaintext highlighter-rouge">yarn add</code> command,
+for example, you would use:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bazel run @nodejs//:yarn <span class="nt">--</span> add &lt;package&gt;
+</code></pre></div></div>
+
+<p>Note: the arguments passed to <code class="language-plaintext highlighter-rouge">bazel run</code> after <code class="language-plaintext highlighter-rouge">--</code> are forwarded to the executable being run.</p>
+
+<h3 id="toolchains">Toolchains</h3>
+
+<p>When you add <code class="language-plaintext highlighter-rouge">node_repositories()</code> to your <code class="language-plaintext highlighter-rouge">WORKSPACE</code> file it will setup a node toolchain for all currently supported platforms, Linux, macOS and Windows. Amongst other things this adds support for cross-compilations as well as Remote Build Execution support. For more detailed information also see <a href="https://docs.bazel.build/versions/master/toolchains.html">Bazel Toolchains</a>.</p>
+
+<p>If you have an advanced use-case you can also register your own toolchains and call <code class="language-plaintext highlighter-rouge">node_toolchain_configure</code> directly to manually setup a toolchain.</p>
+
+<h4 id="cross-compilation">Cross-compilation</h4>
+
+<p>Toolchains allow us to support cross-compilation, e.g. building a linux binary from mac or windows. To tell Bazel to provide a toolchain for a different platform you have to pass in  the <code class="language-plaintext highlighter-rouge">--platforms</code> flag. Currently supported values are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@build_bazel_rules_docker//toolchains/node:linux_amd64</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@build_bazel_rules_docker//toolchains/node:linux_arm64</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@build_bazel_rules_docker//toolchains/node:darwin_amd64</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@build_bazel_rules_docker//toolchains/node:windows_amd64</code></li>
+</ul>
+
+<p>So if for example you want to build a docker image from a non-linux platform you would run <code class="language-plaintext highlighter-rouge">bazel build --platforms=@build_bazel_rules_docker//toolchains/node:linux_amd64 //app</code>, which will ensure that the linux nodejs binary is downloaded and provided to the nodejs_binary target.</p>
+
+<p>Note: The toolchain currently only provides a platform-specific nodejs binary. Any native modules will still be fetched/built, by npm/yarn, for your host platform, so they will not work on the target platform. Support for cross-compilation with native dependencies will follow.</p>
+
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">&copy; 2019 Google, Inc.</div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="#"
+        id="scroll-to-top">
+        Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    var shiftWindow = function() {
+      if (location.hash.length !== 0) {
+        window.scrollBy(0, -50);
+      }
+    };
+    window.addEventListener("hashchange", shiftWindow);
+
+    var highlightCurrentSidebarNav = function() {
+      var href = location.pathname;
+      var item = $('.drawer-nav [href$="' + href + '"]');
+      if (item) {
+        var li = item.parent();
+        li.addClass("active");
+      }
+    };
+
+    /**
+     * Creates a CSE search form and submits the search query.
+     *
+     * Since the Material Design Lite header expandable text field does not
+     * support having a <form> element around the <input> element, we need to
+     * capture the ENTER keypress and then submit the form using this handler.
+     */
+    var submitSearch = function(query) {
+      var form = document.createElement("form");
+      form.setAttribute("action", "search.html");
+
+      var cseParams = {
+        "cx": "008327220137350982602:0mpaowwcmvg",
+        "cof": "FORID:10",
+        "ie": "UTF-8",
+      };
+      for (key in cseParams) {
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", key);
+        hidden.setAttribute("value", cseParams[key]);
+        form.appendChild(hidden);
+      }
+
+      var text = document.createElement("input");
+      text.setAttribute("type", "text");
+      text.setAttribute("name", "q");
+      text.setAttribute("value", query);
+      form.appendChild(text);
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    function setAnchors() {
+      const headerSelectors = ['h1', 'h2', 'h3'];
+
+      headerSelectors.forEach(selector => {
+        const headers = document.querySelectorAll(selector)
+        headers.forEach(header => {
+          anchor = document.createElement('a');
+          // headers id's are already set by jykell
+          const id = header.getAttribute('id');
+          if(id) {
+            anchor.href = '#' + id;
+            anchor.innerText = '# '
+            header.prepend(anchor);
+          }
+        });
+
+      })
+      
+    }
+
+    $(document).ready(function() {
+      // Scroll to anchor of location hash, adjusted for fixed navbar.
+      window.setTimeout(function() {
+        shiftWindow();
+      }, 1);
+
+      // Highlight the current item on the sidebar.
+      highlightCurrentSidebarNav();
+
+      // setup anchors
+      setAnchors();
+
+      // Handler to capture the ENTER keypress for the CSE search input
+      // in the page header and then call submitSearch() to submit the search
+      // query.
+      $("#cse-search-box").keyup(function(e) {
+        if (e.keyCode == 13) {
+          let query = $("#cse-search-box").val();
+          submitSearch(query);
+        }
+      });
+
+      // Handler for the Scroll to Top link in the page footer to scroll the
+      // main content back to the top.
+      $("#scroll-to-top").click(function() {
+        $(".mdl-layout__content").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+    });
+  </script>
+
+  <!-- Google Analytics tracking code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61082125-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+      </main>
+    </div>
+  </body>
+</html>
