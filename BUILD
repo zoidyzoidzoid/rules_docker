@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("//contrib:test.bzl", "container_test")
 
@@ -52,4 +53,50 @@ container_test(
     name = "structure_test_at_workspace_root",
     configs = ["//tests/container/configs:test.yaml"],
     image = "//testdata:link_with_files_base",
+)
+
+exports_files(
+    [
+        "providers.bzl",
+        "index.for_docs.bzl",
+    ],
+    visibility = ["//docs:__subpackages__"],
+)
+
+bzl_library(
+    name = "hash",
+    deps = [
+        "@bazel_tools//tools/build_defs/hash:hash.bzl",
+    ]
+)
+
+bzl_library(
+    name = "bzl",
+    srcs = [
+        # "index.bzl",
+        "index.for_docs.bzl",
+        # "providers.bzl",
+        # "version.bzl",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_docker//container:providers.bzl",
+        "//container:image.bzl",
+        "//container:layer.bzl",
+        "//container:layer_tools.bzl",
+        "//skylib:filetype.bzl",
+        "//skylib:label.bzl",
+        "//skylib:path.bzl",
+        "//skylib:zip.bzl",
+        # "//container:providers.bzl",
+        # "//internal/common:bzl",
+        # "//internal/generated_file_test:bzl",
+        # "//internal/linker:bzl",
+        # "//internal/pkg_npm:bzl",
+        # "//internal/pkg_web:bzl",
+        # "//internal/providers:bzl",
+        # "//toolchains/node:bzl",
+        "@bazel_skylib//lib:dicts",
+        ":hash",
+    ],
 )

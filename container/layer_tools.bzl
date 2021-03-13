@@ -14,7 +14,7 @@
 """Tools for dealing with Docker Image layers."""
 
 load(
-    "@io_bazel_rules_docker//container:providers.bzl",
+    "//container:providers.bzl",
     "ImageInfo",
     "ImportInfo",
 )
