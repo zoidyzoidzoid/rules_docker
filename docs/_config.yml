@@ -1,0 +1,3 @@
+repository: bazelbuild/rules_docker
+plugins:
+  - "jekyll-github-metadata"
