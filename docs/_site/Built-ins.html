@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Built-ins - rules_docker</title>
+
+    <!-- When we have javascript.bazel.build, we may want this:
+    script>
+      var current_url = window.location.href;
+      var bad_url = new RegExp("^https?://bazelbuild.github.io/skydoc/");
+      if (bad_url.test(current_url)) {
+        window.location.replace(current_url.replace(bad_url, "https://skydoc.bazel.build/"));
+      }
+    </script-->
+
+    <link rel="canonical" href="https://github.com/bazelbuild/rules_docker/Built-ins.html">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="css/docs.css">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico">
+
+    <!-- metadata -->
+    <meta name="og:title" content="rules_docker"/>
+    <meta name="og:description" content="Rules for building and handling Docker images with Bazel"/>
+  </head>
+
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+      mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Built-ins</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="https://github.com/bazelbuild/rules_docker">GitHub</a>
+      </nav>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+        mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+          for="cse-search-box">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text"
+            id="cse-search-box">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+      <a href="index.html">Bazel Docker</a>
+    </span>
+    <nav class="drawer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <span class="drawer-nav-title">Documentation</span>
+          <ul>
+            <li><a href="install.html">Installing</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="Built-ins.html">Built-in rules</a></li>
+            <li><a href="repositories.html">Generated repositories</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">CSS Preprocessors</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_sass/blob/master/README.md">Sass <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">JavaScript Preprocessors</span>
+          <ul>
+            <li><a href="TypeScript.html">TypeScript</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Bundlers</span>
+          <ul>
+            <li><a href="Rollup.html">Rollup</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Optimizers</span>
+          <ul>
+            <li><a href="Terser.html">Terser</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Frameworks</span>
+          <ul>
+            <li><a href="examples.html#angular">Angular</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Testing</span>
+          <ul>
+            <li><a href="Cypress.html">Cypress</a></li>
+            <li><a href="Karma.html">Karma</a></li>
+            <li><a href="Protractor.html">Protractor</a></li>
+            <li><a href="Jasmine.html">Jasmine</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Deployment</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker#nodejs_image">Docker <i class="material-icons">launch</i></a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="drawer-nav-title">Get Involved</span>
+          <ul>
+            <li><a href="https://github.com/bazelbuild/rules_docker/blob/master/CONTRIBUTING.md">Contribute to rules_docker</a></li>
+            <li><a href="https://slack.bazel.build/">Join #javascript on Bazel Slack</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker/issues">Issue tracker</a></li>
+            <li><a href="https://github.com/bazelbuild/rules_docker">GitHub</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          
+          <h1 class="page-title">Built-ins</h1>
+          
+
+          <!-- *********************
+ DO NOT EDIT THIS FILE
+  It is a generated build output from Stardoc.
+  Instead you must edit the .bzl file where the rules are declared,
+  or possibly a markdown file next to the .bzl file
+ ********************* -->
+<h1 id="built-in-rules">Built-in rules</h1>
+
+<p>These rules are available without any npm installation, via the <code class="language-plaintext highlighter-rouge">WORKSPACE</code> install of the <code class="language-plaintext highlighter-rouge">build_bazel_rules_nodejs</code> workspace. This is necessary to bootstrap Bazel to run the package manager to download other rules from NPM.</p>
+
+<h2 id="container_image">container_image</h2>
+
+<h3 id="usage">Usage</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>container_image(name, architecture, base, build_layer, cmd, compression, compression_options, create_image_config, creation_time, data_path, debs, directory, docker_run_flags, empty_dirs, empty_files, enable_mtime_preservation, entrypoint, env, experimental_tarball_format, extract_config, files, incremental_load_template, label_file_strings, label_files, labels, launcher, launcher_args, layers, legacy_repository_naming, legacy_run_behavior, mode, mtime, null_cmd, null_entrypoint, operating_system, os_version, portable_mtime, ports, repository, sha256, stamp, symlinks, tars, user, volumes, workdir)
+</code></pre></div></div>
+
+<h4 id="name"><code class="language-plaintext highlighter-rouge">name</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#name">name</a>, mandatory</em>): A unique name for this target.</p>
+
+<h4 id="architecture"><code class="language-plaintext highlighter-rouge">architecture</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"amd64"</code></p>
+
+<h4 id="base"><code class="language-plaintext highlighter-rouge">base</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">None</code></p>
+
+<h4 id="build_layer"><code class="language-plaintext highlighter-rouge">build_layer</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container:build_tar</code></p>
+
+<h4 id="cmd"><code class="language-plaintext highlighter-rouge">cmd</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="compression"><code class="language-plaintext highlighter-rouge">compression</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"gzip"</code></p>
+
+<h4 id="compression_options"><code class="language-plaintext highlighter-rouge">compression_options</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="create_image_config"><code class="language-plaintext highlighter-rouge">create_image_config</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container/go/cmd/create_image_config:create_image_config</code></p>
+
+<h4 id="creation_time"><code class="language-plaintext highlighter-rouge">creation_time</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="data_path"><code class="language-plaintext highlighter-rouge">data_path</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="debs"><code class="language-plaintext highlighter-rouge">debs</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="directory"><code class="language-plaintext highlighter-rouge">directory</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"/"</code></p>
+
+<h4 id="docker_run_flags"><code class="language-plaintext highlighter-rouge">docker_run_flags</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="empty_dirs"><code class="language-plaintext highlighter-rouge">empty_dirs</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="empty_files"><code class="language-plaintext highlighter-rouge">empty_files</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="enable_mtime_preservation"><code class="language-plaintext highlighter-rouge">enable_mtime_preservation</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="entrypoint"><code class="language-plaintext highlighter-rouge">entrypoint</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="env"><code class="language-plaintext highlighter-rouge">env</code></h4>
+<p>(<em><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">{}</code></p>
+
+<h4 id="experimental_tarball_format"><code class="language-plaintext highlighter-rouge">experimental_tarball_format</code></h4>
+<p>(<em>String</em>): The tarball format to use when producing an image .tar file. Defaults to “legacy”, which contains uncompressed layers. If set to “compressed”, the resulting tarball will contain compressed layers, but is only loadable by newer versions of docker. This is an experimental attribute, which is subject to change or removal: do not depend on its exact behavior.</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"legacy"</code></p>
+
+<h4 id="extract_config"><code class="language-plaintext highlighter-rouge">extract_config</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container/go/cmd/extract_config:extract_config</code></p>
+
+<h4 id="files"><code class="language-plaintext highlighter-rouge">files</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="incremental_load_template"><code class="language-plaintext highlighter-rouge">incremental_load_template</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//container:incremental_load_template</code></p>
+
+<h4 id="label_file_strings"><code class="language-plaintext highlighter-rouge">label_file_strings</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="label_files"><code class="language-plaintext highlighter-rouge">label_files</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="labels"><code class="language-plaintext highlighter-rouge">labels</code></h4>
+<p>(<em><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">{}</code></p>
+
+<h4 id="launcher"><code class="language-plaintext highlighter-rouge">launcher</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">None</code></p>
+
+<h4 id="launcher_args"><code class="language-plaintext highlighter-rouge">launcher_args</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="layers"><code class="language-plaintext highlighter-rouge">layers</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="legacy_repository_naming"><code class="language-plaintext highlighter-rouge">legacy_repository_naming</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="legacy_run_behavior"><code class="language-plaintext highlighter-rouge">legacy_run_behavior</code></h4>
+<p>(<em>Boolean</em>): If set to False, <code class="language-plaintext highlighter-rouge">bazel run</code> will directly invoke <code class="language-plaintext highlighter-rouge">docker run</code> with flags specified in the <code class="language-plaintext highlighter-rouge">docker_run_flags</code> attribute. Note that it defaults to False when using <lang>_image rules.</lang></p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">True</code></p>
+
+<h4 id="mode"><code class="language-plaintext highlighter-rouge">mode</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"0o555"</code></p>
+
+<h4 id="mtime"><code class="language-plaintext highlighter-rouge">mtime</code></h4>
+<p>(<em>Integer</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">-1</code></p>
+
+<h4 id="null_cmd"><code class="language-plaintext highlighter-rouge">null_cmd</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="null_entrypoint"><code class="language-plaintext highlighter-rouge">null_entrypoint</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="operating_system"><code class="language-plaintext highlighter-rouge">operating_system</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"linux"</code></p>
+
+<h4 id="os_version"><code class="language-plaintext highlighter-rouge">os_version</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="portable_mtime"><code class="language-plaintext highlighter-rouge">portable_mtime</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="ports"><code class="language-plaintext highlighter-rouge">ports</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="repository"><code class="language-plaintext highlighter-rouge">repository</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">"bazel"</code></p>
+
+<h4 id="sha256"><code class="language-plaintext highlighter-rouge">sha256</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">label</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">//tools/build_defs/hash:sha256</code></p>
+
+<h4 id="stamp"><code class="language-plaintext highlighter-rouge">stamp</code></h4>
+<p>(<em>Boolean</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">False</code></p>
+
+<h4 id="symlinks"><code class="language-plaintext highlighter-rouge">symlinks</code></h4>
+<p>(<em><a href="https://bazel.build/docs/skylark/lib/dict.html">Dictionary: String -&gt; String</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">{}</code></p>
+
+<h4 id="tars"><code class="language-plaintext highlighter-rouge">tars</code></h4>
+<p>(<em><a href="https://bazel.build/docs/build-ref.html#labels">labels</a></em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="user"><code class="language-plaintext highlighter-rouge">user</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+<h4 id="volumes"><code class="language-plaintext highlighter-rouge">volumes</code></h4>
+<p>(<em>List of strings</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">[]</code></p>
+
+<h4 id="workdir"><code class="language-plaintext highlighter-rouge">workdir</code></h4>
+<p>(<em>String</em>)</p>
+
+<p>Defaults to <code class="language-plaintext highlighter-rouge">""</code></p>
+
+
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">&copy; 2019 Google, Inc.</div>
+    </div>
+    <div class="mdl-mini-footer__right-section">
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="#"
+        id="scroll-to-top">
+        Back to Top
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    var shiftWindow = function() {
+      if (location.hash.length !== 0) {
+        window.scrollBy(0, -50);
+      }
+    };
+    window.addEventListener("hashchange", shiftWindow);
+
+    var highlightCurrentSidebarNav = function() {
+      var href = location.pathname;
+      var item = $('.drawer-nav [href$="' + href + '"]');
+      if (item) {
+        var li = item.parent();
+        li.addClass("active");
+      }
+    };
+
+    /**
+     * Creates a CSE search form and submits the search query.
+     *
+     * Since the Material Design Lite header expandable text field does not
+     * support having a <form> element around the <input> element, we need to
+     * capture the ENTER keypress and then submit the form using this handler.
+     */
+    var submitSearch = function(query) {
+      var form = document.createElement("form");
+      form.setAttribute("action", "search.html");
+
+      var cseParams = {
+        "cx": "008327220137350982602:0mpaowwcmvg",
+        "cof": "FORID:10",
+        "ie": "UTF-8",
+      };
+      for (key in cseParams) {
+        var hidden = document.createElement("input");
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", key);
+        hidden.setAttribute("value", cseParams[key]);
+        form.appendChild(hidden);
+      }
+
+      var text = document.createElement("input");
+      text.setAttribute("type", "text");
+      text.setAttribute("name", "q");
+      text.setAttribute("value", query);
+      form.appendChild(text);
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    function setAnchors() {
+      const headerSelectors = ['h1', 'h2', 'h3'];
+
+      headerSelectors.forEach(selector => {
+        const headers = document.querySelectorAll(selector)
+        headers.forEach(header => {
+          anchor = document.createElement('a');
+          // headers id's are already set by jykell
+          const id = header.getAttribute('id');
+          if(id) {
+            anchor.href = '#' + id;
+            anchor.innerText = '# '
+            header.prepend(anchor);
+          }
+        });
+
+      })
+      
+    }
+
+    $(document).ready(function() {
+      // Scroll to anchor of location hash, adjusted for fixed navbar.
+      window.setTimeout(function() {
+        shiftWindow();
+      }, 1);
+
+      // Highlight the current item on the sidebar.
+      highlightCurrentSidebarNav();
+
+      // setup anchors
+      setAnchors();
+
+      // Handler to capture the ENTER keypress for the CSE search input
+      // in the page header and then call submitSearch() to submit the search
+      // query.
+      $("#cse-search-box").keyup(function(e) {
+        if (e.keyCode == 13) {
+          let query = $("#cse-search-box").val();
+          submitSearch(query);
+        }
+      });
+
+      // Handler for the Scroll to Top link in the page footer to scroll the
+      // main content back to the top.
+      $("#scroll-to-top").click(function() {
+        $(".mdl-layout__content").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+    });
+  </script>
+
+  <!-- Google Analytics tracking code -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61082125-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+      </main>
+    </div>
+  </body>
+</html>
