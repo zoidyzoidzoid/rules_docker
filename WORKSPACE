@@ -264,7 +264,7 @@ _py3_image_repos()
 
 # Have the cc_image dependencies for testing.
 load(
-    "//cc:image.bzl",
+    "//cc:repositories.bzl",
     _cc_image_repos = "repositories",
 )
 
