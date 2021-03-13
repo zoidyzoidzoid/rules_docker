@@ -24,37 +24,9 @@ load(
     "//lang:image.bzl",
     "app_layer",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
 
 # Load the resolved digests.
 load(":cc.bzl", "DIGESTS")
-
-def repositories():
-    """Import the dependencies for the cc_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    excludes = native.existing_rules().keys()
-    if "cc_image_base" not in excludes:
-        container_pull(
-            name = "cc_image_base",
-            registry = "gcr.io",
-            repository = "distroless/cc",
-            digest = DIGESTS["latest"],
-        )
-    if "cc_debug_image_base" not in excludes:
-        container_pull(
-            name = "cc_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/cc",
-            digest = DIGESTS["debug"],
-        )
 
 DEFAULT_BASE = select({
     "@io_bazel_rules_docker//:debug": "@cc_debug_image_base//image",
@@ -66,15 +38,16 @@ DEFAULT_BASE = select({
 def cc_image(name, base = None, deps = [], layers = [], binary = None, **kwargs):
     """Constructs a container image wrapping a cc_binary target.
 
-  Args:
-    name: Name of the cc_image target.
-    base: Base image to use for the cc_image.
-    deps: Dependencies of the cc_image.
-    binary: An alternative binary target to use instead of generating one.
-    layers: Augments "deps" with dependencies that should be put into
-           their own layers.
-    **kwargs: See cc_binary.
-  """
+    Args:
+      name: Name of the cc_image target.
+      base: Base image to use for the cc_image.
+      deps: Dependencies of the cc_image.
+      binary: An alternative binary target to use instead of generating one.
+      layers: Augments "deps" with dependencies that should be put into
+             their own layers.
+      **kwargs: See cc_binary.
+
+    """
     if layers:
         print("cc_image does not benefit from layers=[], got: %s" % layers)
 

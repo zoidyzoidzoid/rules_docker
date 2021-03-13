@@ -13,6 +13,7 @@
 # limitations under the License.
 
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//tools/stardoc:index.bzl", "stardoc")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -28,4 +29,51 @@ bzl_library(
     name = "cc_bzl",
     srcs = ["cc.bzl"],
     visibility = ["//visibility:private"],
+)
+
+stardoc(
+    name = "cc_image_doc",
+    out = "cc_image.api",
+    input = ":image.bzl",
+    tags = ["fix-windows"],
+    deps = [
+        "//:bzl",
+        ":bzl",
+        "//container:container",
+        "//lang:image",
+    ],
+)
+
+bzl_library(
+    name = "bzl",
+    srcs = glob(["**/*.bzl"]),
+    deps = [
+        # "@build_bazel_rules_nodejs//:bzl",
+        # "@build_bazel_rules_nodejs//internal/common:bzl",
+        # "@build_bazel_rules_nodejs//internal/node:bzl",
+    ],
+)
+
+stardoc(
+    name = "docs",
+    testonly = True,
+    out = "index.md",
+    input = "index.bzl",
+    tags = ["fix-windows"],
+    deps = [":bzl"],
+)
+
+# Ugly genrule depending on local linux environment to build the README out of skylark doc generation.
+# Only referenced when we do a release.
+# TODO: This ought to be possible with stardoc alone. Need to coordinate with Chris Parsons.
+genrule(
+    name = "generate_README",
+    srcs = [
+        "index.md",
+        "install.md",
+    ],
+    outs = ["README.md"],
+    cmd = """cat $(execpath install.md) $(execpath index.md) | sed 's/^##/\\\n##/' > $@""",
+    tags = ["fix-windows"],
+    visibility = ["//docs:__pkg__"],
 )

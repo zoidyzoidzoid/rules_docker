@@ -21,7 +21,9 @@ licenses(["notice"])  # Apache 2.0
 bzl_library(
     name = "go_repositories_bzl",
     srcs = ["go_repositories.bzl"],
-    visibility = ["//visibility:private"],
+    visibility = [
+        "//cc:__subpackages__",
+    ],
 )
 
 bzl_library(
