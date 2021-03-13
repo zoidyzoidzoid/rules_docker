@@ -19,7 +19,7 @@ load(
     _hash_tools = "tools",
     _sha256 = "sha256",
 )
-load("@io_bazel_rules_docker//container:providers.bzl", "LayerInfo")
+load("//container:providers.bzl", "LayerInfo")
 load(
     "//container:layer_tools.bzl",
     _layer_tools = "tools",

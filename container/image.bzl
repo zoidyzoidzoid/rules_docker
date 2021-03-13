@@ -46,7 +46,7 @@ load(
     _sha256 = "sha256",
 )
 load(
-    "@io_bazel_rules_docker//container:providers.bzl",
+    "//container:providers.bzl",
     "ImageInfo",
     "LayerInfo",
 )

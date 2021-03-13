@@ -516,3 +516,19 @@ load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_reg
 kotlin_repositories()
 
 kt_register_toolchains()
+
+# TODO(zoid): move this to the right place
+http_archive(
+      name = "io_bazel_stardoc",
+      # # Workaround for https://github.com/bazelbuild/stardoc/issues/43
+      # patches = ["@build_bazel_rules_nodejs//:stardoc.patch"],
+      sha256 = "6d07d18c15abb0f6d393adbd6075cd661a2219faab56a9517741f0fc755f6f3c",
+      strip_prefix = "stardoc-0.4.0",
+      urls = [
+          "https://mirror.bazel.build/github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+          "https://github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+      ],
+)
+
+load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
+stardoc_repositories()
