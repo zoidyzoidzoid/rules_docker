@@ -24,6 +24,15 @@ docker_toolchain_configure(
     docker_path = "/usr/bin/docker",
 )
 
+http_archive(
+    name = "build_bazel_rules_nodejs",
+    sha256 = "55a25a762fcf9c9b88ab54436581e671bc9f4f523cb5a1bd32459ebec7be68a8",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/3.2.2/rules_nodejs-3.2.3.tar.gz"],
+    patches = [
+        "//:rules_nodejs_write_BUILD.diff",
+    ],
+)
+
 # Consumers shouldn't need to do this themselves once WORKSPACE is
 # instantiated recursively.
 load(
@@ -212,7 +221,7 @@ container_pull(
 
 # Have the py_image dependencies for testing.
 load(
-    "//python:image.bzl",
+    "//python:repositories.bzl",
     _py_image_repos = "repositories",
 )
 
@@ -246,7 +255,7 @@ load("@debian9//:deps.bzl", debian9_deps = "deps")
 debian9_deps()
 
 load(
-    "//python3:image.bzl",
+    "//python3:repositories.bzl",
     _py3_image_repos = "repositories",
 )
 
@@ -262,7 +271,7 @@ _cc_image_repos()
 
 # Have the java_image dependencies for testing.
 load(
-    "//java:image.bzl",
+    "//java:repositories.bzl",
     _java_image_repos = "repositories",
 )
 
@@ -309,11 +318,38 @@ rules_groovy_dependencies()
 
 # Have the go_image dependencies for testing.
 load(
-    "//go:image.bzl",
+    "//go:repositories.bzl",
     _go_image_repos = "repositories",
 )
 
 _go_image_repos()
+
+# TODO(zoid): move this to the right place
+http_archive(
+      name = "io_bazel_skydoc",
+      # # Workaround for https://github.com/bazelbuild/stardoc/issues/43
+      # patches = ["@build_bazel_rules_nodejs//:stardoc.patch"],
+      sha256 = "6d07d18c15abb0f6d393adbd6075cd661a2219faab56a9517741f0fc755f6f3c",
+      strip_prefix = "stardoc-0.4.0",
+      urls = [
+          "https://mirror.bazel.build/github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+          "https://github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+      ],
+)
+http_archive(
+      name = "io_bazel_stardoc",
+      # # Workaround for https://github.com/bazelbuild/stardoc/issues/43
+      # patches = ["@build_bazel_rules_nodejs//:stardoc.patch"],
+      sha256 = "6d07d18c15abb0f6d393adbd6075cd661a2219faab56a9517741f0fc755f6f3c",
+      strip_prefix = "stardoc-0.4.0",
+      urls = [
+          "https://mirror.bazel.build/github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+          "https://github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
+      ],
+)
+
+load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
+stardoc_repositories()
 
 # For our rust_image test
 http_archive(
@@ -342,12 +378,6 @@ load("@io_bazel_rules_d//d:d.bzl", "d_repositories")
 
 d_repositories()
 
-http_archive(
-    name = "build_bazel_rules_nodejs",
-    sha256 = "10fffa29f687aa4d8eb6dfe8731ab5beb63811ab00981fc84a93899641fd4af1",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/2.0.3/rules_nodejs-2.0.3.tar.gz"],
-)
-
 load("@build_bazel_rules_nodejs//:index.bzl", "yarn_install")
 
 yarn_install(
@@ -357,12 +387,12 @@ yarn_install(
     yarn_lock = "//testdata:yarn.lock",
 )
 
-load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
-
-install_bazel_dependencies()
+# load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
+#
+# install_bazel_dependencies()
 
 load(
-    "//nodejs:image.bzl",
+    "//nodejs:repositories.bzl",
     _nodejs_image_repos = "repositories",
 )
 
@@ -507,19 +537,3 @@ load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_reg
 kotlin_repositories()
 
 kt_register_toolchains()
-
-# TODO(zoid): move this to the right place
-http_archive(
-      name = "io_bazel_stardoc",
-      # # Workaround for https://github.com/bazelbuild/stardoc/issues/43
-      # patches = ["@build_bazel_rules_nodejs//:stardoc.patch"],
-      sha256 = "6d07d18c15abb0f6d393adbd6075cd661a2219faab56a9517741f0fc755f6f3c",
-      strip_prefix = "stardoc-0.4.0",
-      urls = [
-          "https://mirror.bazel.build/github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
-          "https://github.com/bazelbuild/stardoc/archive/0.4.0.tar.gz",
-      ],
-)
-
-load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
-stardoc_repositories()

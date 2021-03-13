@@ -22,6 +22,9 @@ load(
     "DEFAULT_JAVA_BASE",
     "jar_app_layer",
     "jar_dep_layer",
+)
+load(
+    "//java:repositories.bzl",
     _repositories = "repositories",
 )
 

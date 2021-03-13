@@ -18,53 +18,9 @@ The signature of this rule is compatible with py_binary.
 
 load("@rules_python//python:defs.bzl", "py_binary")
 load(
-    "//container:container.bzl",
-    "container_pull",
-)
-load(
     "//lang:image.bzl",
     "app_layer",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
-
-# Load the resolved digests.
-load(":python3.bzl", "DIGESTS")
-
-def repositories():
-    """Import the dependencies of the py3_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    # Register the default py_toolchain / platform for containerized execution
-    native.register_toolchains(
-        "@io_bazel_rules_docker//toolchains:container_py_toolchain",
-    )
-    native.register_execution_platforms(
-        "@local_config_platform//:host",
-        "@io_bazel_rules_docker//platforms:local_container_platform",
-    )
-
-    excludes = native.existing_rules().keys()
-    if "py3_image_base" not in excludes:
-        container_pull(
-            name = "py3_image_base",
-            registry = "gcr.io",
-            repository = "distroless/python3",
-            digest = DIGESTS["latest"],
-        )
-    if "py3_debug_image_base" not in excludes:
-        container_pull(
-            name = "py3_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/python3",
-            digest = DIGESTS["debug"],
-        )
 
 DEFAULT_BASE = select({
     "@io_bazel_rules_docker//:debug": "@py3_debug_image_base//image",
@@ -76,14 +32,14 @@ DEFAULT_BASE = select({
 def py3_image(name, base = None, deps = [], layers = [], **kwargs):
     """Constructs a container image wrapping a py_binary target.
 
-  Args:
-    name: Name of the py3_image rule target.
-    base: Base image to use for the py3_image.
-    deps: Dependencies of the py3_image.
-    layers: Augments "deps" with dependencies that should be put into
-           their own layers.
-    **kwargs: See py_binary.
-  """
+    Args:
+      name: Name of the py3_image rule target.
+      base: Base image to use for the py3_image.
+      deps: Dependencies of the py3_image.
+      layers: Augments "deps" with dependencies that should be put into
+             their own layers.
+      **kwargs: See py_binary.
+    """
     binary_name = name + ".binary"
 
     if "main" not in kwargs:

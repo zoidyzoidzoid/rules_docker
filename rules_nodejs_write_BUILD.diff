@@ -1,0 +1,39 @@
+diff -urN internal/generated_file_test/BUILD internal/generated_file_test/BUILD
+--- internal/generated_file_test/BUILD	2000-01-01 01:00:00.000000000 +0100
++++ internal/generated_file_test/BUILD	2021-03-13 23:04:35.000000000 +0100
+@@ -1 +1,20 @@
+-exports_files(["bundle.js"])
++exports_files(["bundle.js"])
++
++load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
++
++package(default_visibility = ["//visibility:public"])
++
++bzl_library(
++    name = "bzl",
++    srcs = glob(["*.bzl"]),
++    visibility = ["//visibility:public"],
++)
++
++filegroup(
++    name = "package_contents",
++    srcs = [
++        "BUILD",
++        "bundle.js",
++        "generated_file_test.bzl",
++    ],
++)
+diff -urN internal/linker/BUILD.bazel internal/linker/BUILD.bazel
+--- internal/linker/BUILD.bazel	2000-01-01 01:00:00.000000000 +0100
++++ internal/linker/BUILD.bazel	2021-03-13 23:03:45.000000000 +0100
+@@ -1,3 +1,10 @@
++load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
++
++bzl_library(
++    name = "bzl",
++    srcs = glob(["*.bzl"]),
++    visibility = ["//visibility:public"],
++)
+
+ exports_files([
+     "index.js",

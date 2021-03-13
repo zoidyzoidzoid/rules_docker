@@ -13,6 +13,7 @@
 # limitations under the License.
 
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//tools/stardoc:index.bzl", "stardoc")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -35,3 +36,24 @@ bzl_library(
     srcs = ["static.bzl"],
     visibility = ["//visibility:private"],
 )
+
+# bzl_library(
+#     name = "bzl",
+#     srcs = glob(["**/*.bzl"]),
+#     deps = [
+#     ],
+# )
+
+# stardoc(
+#     name = "go_image_doc",
+#     out = "go_image.api",
+#     input = ":image.bzl",
+#     tags = ["fix-windows"],
+#     deps = [
+#         # "//:bzl",
+#         # ":bzl",
+#         "@io_bazel_rules_go//go:def",
+#         # "//container:container",
+#         # "//lang:image",
+#     ],
+# )

@@ -22,7 +22,6 @@ load("@bazel_skylib//lib:dicts.bzl", "dicts")
 load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
 load(
     "//container:container.bzl",
-    "container_pull",
     _container = "container",
 )
 load(
@@ -30,66 +29,6 @@ load(
     "layer_file_path",
     lang_image = "image",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
-
-# Load the resolved digests.
-load(
-    ":java.bzl",
-    _JAVA_DIGESTS = "DIGESTS",
-)
-load(
-    ":jetty.bzl",
-    _JETTY_DIGESTS = "DIGESTS",
-)
-
-def repositories():
-    """Import the dependencies of the java_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    excludes = native.existing_rules().keys()
-    if "java_image_base" not in excludes:
-        container_pull(
-            name = "java_image_base",
-            registry = "gcr.io",
-            repository = "distroless/java",
-            digest = _JAVA_DIGESTS["latest"],
-        )
-    if "java_debug_image_base" not in excludes:
-        container_pull(
-            name = "java_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/java",
-            digest = _JAVA_DIGESTS["debug"],
-        )
-    if "jetty_image_base" not in excludes:
-        container_pull(
-            name = "jetty_image_base",
-            registry = "gcr.io",
-            repository = "distroless/java/jetty",
-            digest = _JETTY_DIGESTS["latest"],
-        )
-    if "jetty_debug_image_base" not in excludes:
-        container_pull(
-            name = "jetty_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/java/jetty",
-            digest = _JETTY_DIGESTS["debug"],
-        )
-    if "javax_servlet_api" not in excludes:
-        jvm_maven_import_external(
-            name = "javax_servlet_api",
-            artifact = "javax.servlet:javax.servlet-api:3.0.1",
-            artifact_sha256 = "377d8bde87ac6bc7f83f27df8e02456d5870bb78c832dac656ceacc28b016e56",
-            server_urls = ["https://repo1.maven.org/maven2"],
-            licenses = ["notice"],  # Apache 2.0
-        )
 
 DEFAULT_JAVA_BASE = select({
     "@io_bazel_rules_docker//:debug": "@java_debug_image_base//image",
@@ -268,24 +207,24 @@ def java_image(
         **kwargs):
     """Builds a container image overlaying the java_binary.
 
-  Args:
-    name: Name of the image target.
-    base: Base image to use for the java image.
-    deps: Dependencies of the java image rule.
-    runtime_deps: Runtime dependencies of the java image.
-    jvm_flags: Flags to pass to the JVM when running the java image.
-    layers: Augments "deps" with dependencies that should be put into
-           their own layers.
-    main_class: This parameter is optional. If provided it will be used in the
-                compilation of any additional sources, and as part of the
-                construction of the container entrypoint. If not provided, the
-                name parameter is used as the main_class when compiling any
-                additional sources, and the main_class is not included in the
-                construction of the container entrypoint. Omitting main_class
-                allows the user to specify additional arguments to the JVM at
-                runtime.
-    **kwargs: See java_binary.
-  """
+    Args:
+      name: Name of the image target.
+      base: Base image to use for the java image.
+      deps: Dependencies of the java image rule.
+      runtime_deps: Runtime dependencies of the java image.
+      jvm_flags: Flags to pass to the JVM when running the java image.
+      layers: Augments "deps" with dependencies that should be put into
+             their own layers.
+      main_class: This parameter is optional. If provided it will be used in the
+                  compilation of any additional sources, and as part of the
+                  construction of the container entrypoint. If not provided, the
+                  name parameter is used as the main_class when compiling any
+                  additional sources, and the main_class is not included in the
+                  construction of the container entrypoint. Omitting main_class
+                  allows the user to specify additional arguments to the JVM at
+                  runtime.
+      **kwargs: See java_binary.
+    """
     binary_name = name + ".binary"
     native.java_binary(
         name = binary_name,
@@ -403,18 +342,18 @@ _war_app_layer = rule(
 def war_image(name, base = None, deps = [], layers = [], **kwargs):
     """Builds a container image overlaying the java_library as an exploded WAR.
 
-  TODO(mattmoor): For `bazel run` of this to be useful, we need to be able
-  to ctrl-C it and have the container actually terminate.  More information:
-  https://github.com/bazelbuild/bazel/issues/3519
+    TODO(mattmoor): For `bazel run` of this to be useful, we need to be able
+    to ctrl-C it and have the container actually terminate.  More information:
+    https://github.com/bazelbuild/bazel/issues/3519
 
-  Args:
-    name: Name of the war_image target.
-    base: Base image to use for the war image.
-    deps: Dependencies of the way image target.
-    layers: Augments "deps" with dependencies that should be put into
-           their own layers.
-    **kwargs: See java_library.
-  """
+    Args:
+      name: Name of the war_image target.
+      base: Base image to use for the war image.
+      deps: Dependencies of the way image target.
+      layers: Augments "deps" with dependencies that should be put into
+             their own layers.
+      **kwargs: See java_library.
+    """
     library_name = name + ".library"
 
     native.java_library(name = library_name, deps = deps + layers, **kwargs)
