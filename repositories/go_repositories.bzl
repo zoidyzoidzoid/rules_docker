@@ -22,6 +22,11 @@ repository.
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 
+load(
+    "@io_bazel_rules_go//go:deps.bzl",
+    "go_download_sdk",
+)
+
 def go_deps():
     """Pull in external Go packages needed by Go binaries in this repo.
 
@@ -30,6 +35,19 @@ def go_deps():
     'repositories' in //repositories:repositories.bzl have been imported
     already.
     """
+
+    go_download_sdk(
+        name = "go_sdk_linux",
+        goos = "linux",
+        goarch = "amd64",
+        version = "1.16.2",
+    )
+    go_download_sdk(
+        name = "go_sdk_darwin",
+        goos = "darwin",
+        goarch = "amd64",
+        version = "1.16.2",
+    )
     go_rules_dependencies()
     go_register_toolchains()
     gazelle_dependencies()

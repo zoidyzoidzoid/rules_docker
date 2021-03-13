@@ -21,59 +21,9 @@ The signature of this rule is compatible with go_binary.
 # go_image.
 load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 load(
-    "//container:container.bzl",
-    "container_pull",
-)
-load(
     "//lang:image.bzl",
     "app_layer",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
-
-# Load the resolved digests.
-load(":go.bzl", BASE_DIGESTS = "DIGESTS")
-load(":static.bzl", STATIC_DIGESTS = "DIGESTS")
-
-def repositories():
-    """Import the dependencies of the go_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    excludes = native.existing_rules().keys()
-    if "go_image_base" not in excludes:
-        container_pull(
-            name = "go_image_base",
-            registry = "gcr.io",
-            repository = "distroless/base",
-            digest = BASE_DIGESTS["latest"],
-        )
-    if "go_debug_image_base" not in excludes:
-        container_pull(
-            name = "go_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/base",
-            digest = BASE_DIGESTS["debug"],
-        )
-    if "go_image_static" not in excludes:
-        container_pull(
-            name = "go_image_static",
-            registry = "gcr.io",
-            repository = "distroless/static",
-            digest = STATIC_DIGESTS["latest"],
-        )
-    if "go_debug_image_static" not in excludes:
-        container_pull(
-            name = "go_debug_image_static",
-            registry = "gcr.io",
-            repository = "distroless/static",
-            digest = STATIC_DIGESTS["debug"],
-        )
 
 DEFAULT_BASE = select({
     "@io_bazel_rules_docker//:debug": "@go_debug_image_base//image",
@@ -92,14 +42,14 @@ STATIC_DEFAULT_BASE = select({
 def go_image(name, base = None, deps = [], layers = [], binary = None, **kwargs):
     """Constructs a container image wrapping a go_binary target.
 
-  Args:
-    name: Name of the go_image target.
-    base: Base image to use to build the go_image.
-    deps: Dependencies of the go image target.
-    binary: An alternative binary target to use instead of generating one.
-    layers: Augments "deps" with dependencies that should be put into their own layers.
-    **kwargs: See go_binary.
-  """
+    Args:
+      name: Name of the go_image target.
+      base: Base image to use to build the go_image.
+      deps: Dependencies of the go image target.
+      binary: An alternative binary target to use instead of generating one.
+      layers: Augments "deps" with dependencies that should be put into their own layers.
+      **kwargs: See go_binary.
+    """
     if layers:
         print("go_image does not benefit from layers=[], got: %s" % layers)
 

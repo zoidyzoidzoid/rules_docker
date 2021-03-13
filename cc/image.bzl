@@ -17,10 +17,6 @@ The signature of this rule is compatible with cc_binary.
 """
 
 load(
-    "//container:container.bzl",
-    "container_pull",
-)
-load(
     "//lang:image.bzl",
     "app_layer",
 )

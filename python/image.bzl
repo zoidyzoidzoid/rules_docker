@@ -17,54 +17,13 @@ The signature of this rule is compatible with py_binary.
 """
 
 load(
-    "//container:container.bzl",
-    "container_pull",
-)
-load(
     "//lang:image.bzl",
     "app_layer",
     "filter_layer",
 )
-load(
-    "//repositories:go_repositories.bzl",
-    _go_deps = "go_deps",
-)
 
 # Load the resolved digests.
 load(":python.bzl", "DIGESTS")
-
-def repositories():
-    """Import the dependencies of the py_image rule.
-
-    Call the core "go_deps" function to reduce boilerplate. This is
-    idempotent if folks call it themselves.
-    """
-    _go_deps()
-
-    # Register the default py_toolchain / platform for containerized execution
-    native.register_toolchains(
-        "@io_bazel_rules_docker//toolchains:container_py_toolchain",
-    )
-    native.register_execution_platforms(
-        "@local_config_platform//:host",
-        "@io_bazel_rules_docker//platforms:local_container_platform",
-    )
-
-    excludes = native.existing_rules().keys()
-    if "py_image_base" not in excludes:
-        container_pull(
-            name = "py_image_base",
-            registry = "gcr.io",
-            repository = "distroless/python2.7",
-            digest = DIGESTS["latest"],
-        )
-    if "py_debug_image_base" not in excludes:
-        container_pull(
-            name = "py_debug_image_base",
-            registry = "gcr.io",
-            repository = "distroless/python2.7",
-            digest = DIGESTS["debug"],
-        )
 
 DEFAULT_BASE = select({
     "@io_bazel_rules_docker//:debug": "@py_debug_image_base//image",

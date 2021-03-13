@@ -19,6 +19,10 @@ load(
     "http_file",
 )
 load(
+    "@bazel_tools//tools/build_defs/repo:git.bzl",
+    "git_repository",
+)
+load(
     "@io_bazel_rules_docker//toolchains/docker:toolchain.bzl",
     _docker_toolchain_configure = "toolchain_configure",
 )
@@ -111,17 +115,17 @@ def repositories():
     if "io_bazel_rules_go" not in excludes:
         http_archive(
             name = "io_bazel_rules_go",
-            sha256 = "08c3cd71857d58af3cda759112437d9e63339ac9c6e0042add43f4d94caf632d",
+            sha256 = "7c10271940c6bce577d51a075ae77728964db285dac0a46614a7934dc34303e6",
             urls = [
-                "https://storage.googleapis.com/bazel-mirror/github.com/bazelbuild/rules_go/releases/download/v0.24.2/rules_go-v0.24.2.tar.gz",
-                "https://github.com/bazelbuild/rules_go/releases/download/v0.24.2/rules_go-v0.24.2.tar.gz",
+                "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
+                "https://github.com/bazelbuild/rules_go/releases/download/v0.26.0/rules_go-v0.26.0.tar.gz",
             ],
         )
     if "rules_python" not in excludes:
-        http_archive(
+        git_repository(
             name = "rules_python",
-            url = "https://github.com/bazelbuild/rules_python/releases/download/0.1.0/rules_python-0.1.0.tar.gz",
-            sha256 = "b6d46438523a3ec0f3cead544190ee13223a52f6a6765a29eae7b7cc24cc83a0",
+            remote = "https://github.com/bazelbuild/rules_python.git",
+            branch = "master",
         )
 
     # For packaging python tools.
@@ -178,8 +182,11 @@ def repositories():
     if "bazel_gazelle" not in excludes:
         http_archive(
             name = "bazel_gazelle",
-            sha256 = "cdb02a887a7187ea4d5a27452311a75ed8637379a1287d8eeb952138ea485f7d",
-            urls = ["https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.21.1/bazel-gazelle-v0.21.1.tar.gz"],
+            sha256 = "62ca106be173579c0a167deb23358fdfe71ffa1e4cfdddf5582af26520f1c66f",
+            urls = [
+                "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
+                "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.23.0/bazel-gazelle-v0.23.0.tar.gz",
+            ],
         )
 
     if "rules_pkg" not in excludes:
