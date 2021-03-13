@@ -798,28 +798,28 @@ def _validate_command(name, argument, operating_system):
 def container_image(**kwargs):
     """Package a docker image.
 
-  This rule generates a sequence of genrules the last of which is named 'name',
-  so the dependency graph works out properly.  The output of this rule is a
-  tarball compatible with 'docker save/load' with the structure:
-    {layer-name}:
-      layer.tar
-      VERSION
-      json
-    {image-config-sha256}.json
-    ...
-    manifest.json
-    repositories
-    top     # an implementation detail of our rules, not consumed by Docker.
-  This rule appends a single new layer to the tarball of this form provided
-  via the 'base' parameter.
+    This rule generates a sequence of genrules the last of which is named 'name',
+    so the dependency graph works out properly.  The output of this rule is a
+    tarball compatible with 'docker save/load' with the structure:
+      {layer-name}:
+        layer.tar
+        VERSION
+        json
+      {image-config-sha256}.json
+      ...
+      manifest.json
+      repositories
+      top     # an implementation detail of our rules, not consumed by Docker.
+    This rule appends a single new layer to the tarball of this form provided
+    via the 'base' parameter.
 
-  The images produced by this rule are always named 'bazel/tmp:latest' when
-  loaded (an internal detail).  The expectation is that the images produced
-  by these rules will be uploaded using the 'docker_push' rule below.
+    The images produced by this rule are always named 'bazel/tmp:latest' when
+    loaded (an internal detail).  The expectation is that the images produced
+    by these rules will be uploaded using the 'docker_push' rule below.
 
-  Args:
-    **kwargs: See above.
-  """
+    Args:
+      **kwargs: See above.
+    """
     operating_system = None
 
     if ("operating_system" in kwargs):

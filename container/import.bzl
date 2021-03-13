@@ -19,7 +19,7 @@ load(
     _hash_tools = "tools",
     _sha256 = "sha256",
 )
-load("@io_bazel_rules_docker//container:providers.bzl", "ImportInfo", "PullInfo")
+load("//container:providers.bzl", "ImportInfo", "PullInfo")
 load(
     "//container:layer_tools.bzl",
     _assemble_image = "assemble",

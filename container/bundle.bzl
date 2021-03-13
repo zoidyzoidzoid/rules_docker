@@ -14,7 +14,7 @@
 """Rule for bundling Container images into a tarball."""
 
 load("@bazel_skylib//lib:dicts.bzl", "dicts")
-load("@io_bazel_rules_docker//container:providers.bzl", "BundleInfo")
+load("//container:providers.bzl", "BundleInfo")
 load(
     "//container:layer_tools.bzl",
     _assemble_image = "assemble",
@@ -126,9 +126,9 @@ container_bundle_ = rule(
 def container_bundle(**kwargs):
     """Package several container images into a single tarball.
 
-  Args:
-    **kwargs: See above.
-  """
+    Args:
+      **kwargs: See above.
+    """
     for reserved in ["image_targets", "image_target_strings"]:
         if reserved in kwargs:
             fail("reserved for internal use by container_bundle macro", attr = reserved)
