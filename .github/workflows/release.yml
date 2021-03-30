@@ -49,7 +49,7 @@ jobs:
           asset_name: puller-${{ steps.release_version.outputs.VERSION }}-linux-x86_64
           asset_content_type: application/octet-stream
       - name: upload loader
-        id: upload-release-asset -loader
+        id: upload-release-asset-loader
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
