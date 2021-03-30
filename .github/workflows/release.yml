@@ -9,16 +9,6 @@ on:
     - zoid/releaser-tool
 
 jobs:
-  build:
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run a multi-line script
-        run: |
-          curl -LO bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1.7.5/bazelisk-linux-amd64
-          chmod +x bazelisk
-
-
-jobs:
   linux:
     name: create linux binary
     runs-on: ubuntu-latest
