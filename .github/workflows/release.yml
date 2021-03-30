@@ -28,7 +28,7 @@ jobs:
         id: arch
         run: |
           ARCH=${{ matrix.platform }}
-          echo ::set-output name=ARCH::${ARCH/linux_//}
+          echo ::set-output name=ARCH::${ARCH/linux_/}
       - name: build
         run: |
           set -eu
