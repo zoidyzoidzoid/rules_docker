@@ -37,18 +37,12 @@ jobs:
           ./bazelisk-linux-amd64 build --platforms=@io_bazel_rules_go//go/toolchain:${{ matrix.platform }} //container/go/cmd/puller:puller //container/go/cmd/loader:loader
           ./bazelisk-linux-amd64 run --run_under "cp -f " //container/go/cmd/puller:puller $(pwd)/puller-lnux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
           ./bazelisk-linux-amd64 run --run_under "cp -f " //container/go/cmd/loader:loader $(pwd)/loader-lnux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
-      - name: get release URL
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload
         uses: softprops/action-gh-release@v1
-        # if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            puller-lnux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
-            loader-lnux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
+            puller-linux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
+            loader-linux-${{ steps.release_version.outputs.VERSION }}-${{ steps.arch.outputs.ARCH }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -69,14 +63,8 @@ jobs:
           ./bazelisk-darwin-amd64 build --platforms=@io_bazel_rules_go//go/toolchain:darwin_amd64 //container/go/cmd/puller:puller //container/go/cmd/loader:loader
           ./bazelisk-darwin-amd64 run --run_under "cp -f " //container/go/cmd/puller:puller $(pwd)/puller-darwin-${{ steps.release_version.outputs.VERSION }}-x86_64
           ./bazelisk-darwin-amd64 run --run_under "cp -f " //container/go/cmd/loader:loader $(pwd)/loader-darwin-${{ steps.release_version.outputs.VERSION }}-x86_64
-      - name: get release URL
-        id: get_release
-        uses: bruceadams/get-release@v1.2.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload
         uses: softprops/action-gh-release@v1
-        # if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             puller-darwin-${{ steps.release_version.outputs.VERSION }}-x86_64
