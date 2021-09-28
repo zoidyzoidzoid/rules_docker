@@ -30,6 +30,10 @@ import tempfile
 
 from container import archive
 
+import rpmfile
+from rpmfile import rpmdefs
+
+
 class TarFile(object):
   """A class to generates a Docker layer."""
 
@@ -282,6 +286,37 @@ class TarFile(object):
     if not pkg_metadata_found:
       raise self.DebError(deb + ' does not contains a control file!')
 
+  def add_rpm(self, rpm):
+    """Extract a rpm package in the output tar.
+
+    All files presents in that rpm package will be added to the
+    output tar under the same paths. No user name nor group names will
+    be added to the output.
+
+    Args:
+      rpm: the rpm file to add
+    """
+    with rpmfile.open(rpm) as f:
+        # Not sure why this is the header, and not the modes one
+        modes = f.headers[1144]
+        for i, m in enumerate(f.getmembers()):
+            mode = 0o644
+            name = m.name
+            print(name)
+            if name.startswith('.'):
+                name = name[1:]
+            if name.startswith('/bin') or name.startswith('/sbin'):
+                name = '/usr/local' + name
+            if name.startswith('/usr/bin') or name.startswith('/usr/sbin'):
+                name = '/usr/local' + name.replace('/usr/', '/')
+            if "bin/" in name:
+                mode = 0o755
+            with self.write_temp_file(data=f.extractfile(m.name).read()) as temp_file:
+                from os.path import basename, dirname
+                self.directory = dirname(name)
+                name = basename(name)
+                self.add_file(temp_file, name, mode=mode)
+
   @staticmethod
   def _xzcat_decompress(xz_path, data):
     """Decompresses the xz-encrypted bytes in data by piping to xz."""
@@ -377,6 +412,8 @@ def main(FLAGS):
           output.add_tar(tar)
         for deb in manifest.get('debs', []):
           output.add_deb(deb)
+        for rpm in manifest.get('rpms', []):
+          output.add_rpm(rpm)
 
     for f in FLAGS.file:
       (inf, tof) = f.split('=', 1)
@@ -391,6 +428,8 @@ def main(FLAGS):
       output.add_tar(tar)
     for deb in FLAGS.deb:
       output.add_deb(deb)
+    for rpm in FLAGS.rpm:
+      output.add_rpm(rpm)
     for link in FLAGS.link:
       l = link.split(':', 1)
       output.add_link(l[0], l[1])

@@ -290,6 +290,7 @@ def _impl(
         compression_options = None,
         experimental_tarball_format = None,
         debs = None,
+        rpms = None,
         tars = None,
         architecture = None,
         operating_system = None,
@@ -345,6 +346,7 @@ def _impl(
         compression_options: str list, overrides ctx.attr.compression_options
         experimental_tarball_format: str, overrides ctx.attr.experimental_tarball_format
         debs: File list, overrides ctx.files.debs
+        rpms: File list, overrides ctx.files.rpms
         tars: File list, overrides ctx.files.tars
         architecture: str, overrides ctx.attr.architecture
         operating_system: Operating system to target (e.g. linux, windows)
@@ -413,6 +415,7 @@ def _impl(
         compression = compression,
         compression_options = compression_options,
         debs = debs,
+        rpms = rpms,
         tars = tars,
         env = env,
         operating_system = operating_system,
